@@ -15,6 +15,25 @@ export function ProjectsPage() {
       </section>
 
       <section className="page-panel">
+        <div className="status-grid">
+          <div className="status-row">
+            <span className="status-row__label">Archive size</span>
+            <p className="status-row__value">{projects.length} project modules</p>
+          </div>
+
+          <div className="status-row">
+            <span className="status-row__label">Capability map</span>
+            <p className="status-row__value">{capabilities.length} linked capabilities</p>
+          </div>
+
+          <div className="status-row">
+            <span className="status-row__label">Working range</span>
+            <p className="status-row__value">Workflow, utility, iOS, web, and applied AI.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="page-panel">
         <div className="system-grid">
           <span className="panel-label">Capability index</span>
           <div className="capability-tags">

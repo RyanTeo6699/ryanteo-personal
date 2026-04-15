@@ -56,6 +56,8 @@ export const siteIdentity = {
   tagline: 'Building AI products, systems, and leverage.',
 };
 
+export const avatarImageUrl = new URL('../../素材/头像.JPG', import.meta.url).href;
+
 export const pageDirectory: PageDirectoryEntry[] = [
   {
     id: 'home',
@@ -434,9 +436,16 @@ export const contactLinks: ContactLink[] = [
   {
     id: 'email',
     label: 'Email',
-    value: 'iceray0628@gmail.com',
+    value: 'ryanteo0628@gmail.com',
     note: 'Best for direct conversations.',
-    href: 'mailto:iceray0628@gmail.com',
+    href: 'mailto:ryanteo0628@gmail.com',
+  },
+  {
+    id: 'linkedin',
+    label: 'LinkedIn',
+    value: 'ryanteo101',
+    note: 'Professional profile and background.',
+    href: 'https://www.linkedin.com/in/ryanteo101/',
   },
   {
     id: 'github',
@@ -444,18 +453,6 @@ export const contactLinks: ContactLink[] = [
     value: 'RyanTeo6699',
     note: 'Code and public work.',
     href: 'https://github.com/RyanTeo6699',
-  },
-  {
-    id: 'linkedin',
-    label: 'LinkedIn',
-    value: 'Available on request',
-    note: 'Profile URL was not present in the repo.',
-  },
-  {
-    id: 'x',
-    label: 'X',
-    value: 'Available on request',
-    note: 'Profile URL was not present in the repo.',
   },
 ];
 

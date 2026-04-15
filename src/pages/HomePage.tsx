@@ -4,6 +4,7 @@ import { CapabilityMapPanel } from '../components/CapabilityMapPanel';
 import { ProjectModule } from '../components/ProjectModule';
 import {
   aboutContent,
+  avatarImageUrl,
   capabilities,
   contactContent,
   contactLinks,
@@ -146,6 +147,22 @@ export function HomePage() {
     <div className="page-stack">
       <section className="page-panel hero-panel">
         <div className="hero-grid">
+          <div className="hero-visual">
+            <div className="portrait-frame hero-portrait-frame">
+              <div className="window-bar">
+                <span className="window-chip">Avatar</span>
+                <span className="window-title">Ryan</span>
+                <span className="window-status">Source JPG</span>
+              </div>
+
+              <img
+                className="hero-portrait"
+                src={avatarImageUrl}
+                alt="Ryan portrait"
+              />
+            </div>
+          </div>
+
           <div className="hero-copy-block">
             <span className="hero-label">{heroContent.name}</span>
             <h1 className="hero-title">{heroContent.primaryLine}</h1>
@@ -175,19 +192,19 @@ export function HomePage() {
                 {heroContent.secondaryCta.label}
               </button>
             </div>
-          </div>
 
-          <aside className="hero-aside">
-            <span className="panel-label">System status</span>
-            <div className="status-grid">
-              {heroContent.statusRows.map((row) => (
-                <div key={row.label} className="status-row">
-                  <span className="status-row__label">{row.label}</span>
-                  <p className="status-row__value">{row.value}</p>
-                </div>
-              ))}
-            </div>
-          </aside>
+            <aside className="hero-aside">
+              <span className="panel-label">System status</span>
+              <div className="status-grid">
+                {heroContent.statusRows.map((row) => (
+                  <div key={row.label} className="status-row">
+                    <span className="status-row__label">{row.label}</span>
+                    <p className="status-row__value">{row.value}</p>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
 

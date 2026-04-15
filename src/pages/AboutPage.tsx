@@ -1,6 +1,4 @@
-import { aboutContent, capabilities } from '../data/site-data';
-
-const portrait = new URL('../../素材/NFT RYAN.PNG', import.meta.url).href;
+import { aboutContent, avatarImageUrl, capabilities } from '../data/site-data';
 
 export function AboutPage() {
   return (
@@ -19,8 +17,8 @@ export function AboutPage() {
         <div className="about-hero">
           <div className="portrait-frame">
             <img
-              src={portrait}
-              alt="Ryan portrait rendered in pixel art"
+              src={avatarImageUrl}
+              alt="Ryan portrait"
             />
           </div>
 
