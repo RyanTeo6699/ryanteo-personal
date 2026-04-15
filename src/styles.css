@@ -84,6 +84,18 @@ a {
   text-decoration: none;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: absolute;
   left: 12px;
@@ -164,11 +176,10 @@ a {
 .action-link,
 .map-reset,
 .quick-link-card,
-.contact-card,
-.contact-entry[href],
 .project-module-button,
 .map-project-node,
-.capability-card {
+.capability-card,
+.contact-icon-link {
   transition:
     transform 160ms ease,
     background-color 160ms ease,
@@ -230,9 +241,6 @@ a {
 .rail-panel,
 .project-module,
 .map-shell,
-.thinking-record,
-.contact-entry,
-.contact-card,
 .quick-link-card,
 .portrait-frame {
   position: relative;
@@ -243,8 +251,7 @@ a {
 
 .page-panel,
 .rail-panel,
-.map-shell,
-.contact-card {
+.map-shell {
   padding: 22px;
 }
 
@@ -252,9 +259,6 @@ a {
 .rail-panel::before,
 .project-module::before,
 .map-shell::before,
-.thinking-record::before,
-.contact-entry::before,
-.contact-card::before,
 .quick-link-card::before,
 .portrait-frame::before {
   content: '';
@@ -272,8 +276,6 @@ a {
 .hero-label,
 .section-label,
 .module-label,
-.record-label,
-.contact-label,
 .rail-label,
 .window-chip,
 .window-status,
@@ -308,7 +310,6 @@ a {
 .hero-copy,
 .section-copy,
 .route-copy,
-.contact-note,
 .rail-copy,
 .map-summary,
 .about-body p,
@@ -316,9 +317,7 @@ a {
 .module-role,
 .map-project-text,
 .capability-description,
-.record-note,
-.quick-link-description,
-.contact-entry__note {
+.quick-link-description {
   margin: 0;
   color: var(--ink-soft);
   font-size: 1rem;
@@ -413,8 +412,7 @@ a {
 
 .status-grid,
 .rail-grid,
-.about-metadata,
-.contact-grid {
+.about-metadata {
   display: grid;
   gap: 12px;
 }
@@ -449,8 +447,7 @@ a {
 
 .status-row__value,
 .rail-row__value,
-.about-meta-row__value,
-.contact-value {
+.about-meta-row__value {
   margin: 0;
   font-weight: 900;
   line-height: 1.4;
@@ -739,28 +736,6 @@ a {
   opacity: 0.9;
 }
 
-.thinking-list {
-  display: grid;
-  gap: 16px;
-}
-
-.thinking-record {
-  display: grid;
-  grid-template-columns: 110px minmax(0, 1fr) minmax(240px, 0.72fr);
-  gap: 20px;
-  padding: 18px;
-  background: var(--panel-strong);
-}
-
-.record-statement {
-  margin: 0;
-  font-size: clamp(1.22rem, 2.5vw, 1.95rem);
-  font-weight: 900;
-  letter-spacing: -0.05em;
-  line-height: 1.05;
-  text-transform: uppercase;
-}
-
 .about-hero {
   display: grid;
   grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
@@ -773,28 +748,6 @@ a {
   gap: 14px;
 }
 
-.contact-entries {
-  display: grid;
-  gap: 14px;
-}
-
-.contact-entry,
-.contact-card {
-  display: grid;
-  gap: 10px;
-  padding: 18px;
-  background: var(--panel-strong);
-}
-
-.contact-entry {
-  grid-template-columns: minmax(90px, 120px) minmax(0, 1fr) minmax(190px, 250px);
-  align-items: center;
-}
-
-.contact-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .preview-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
@@ -804,6 +757,31 @@ a {
 .preview-card {
   display: grid;
   gap: 16px;
+}
+
+.contact-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-icon-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border: 3px solid var(--line);
+  background: var(--panel-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-icon-link svg {
+  width: 28px;
+  height: 28px;
+  color: var(--ink);
+  fill: currentColor;
 }
 
 .site-footer {
@@ -880,29 +858,25 @@ a:focus-visible {
   .action-link:hover,
   .map-reset:not(:disabled):hover,
   .quick-link-card:hover,
-  .contact-entry[href]:hover,
-  .contact-card:hover,
   .project-module-button:hover,
   .map-project-node:hover,
-  .capability-card:hover {
+  .capability-card:hover,
+  .contact-icon-link:hover {
     transform: translate(-3px, -3px);
     box-shadow: 9px 9px 0 #111111;
   }
 
   .quick-link-card:hover,
-  .contact-card:hover,
-  .contact-entry[href]:hover {
+  .contact-icon-link:hover {
     background: var(--ink);
     color: var(--panel);
   }
 
-  .quick-link-card:hover .quick-link-description,
-  .contact-card:hover .contact-note,
-  .contact-card:hover .contact-label,
-  .contact-card:hover .contact-value,
-  .contact-entry[href]:hover .contact-entry__note,
-  .contact-entry[href]:hover .contact-label,
-  .contact-entry[href]:hover .contact-value {
+  .contact-icon-link:hover svg {
+    color: var(--panel);
+  }
+
+  .quick-link-card:hover .quick-link-description {
     color: var(--panel);
   }
 
@@ -939,10 +913,6 @@ a:focus-visible {
   .quick-links-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 980px) {
@@ -950,8 +920,7 @@ a:focus-visible {
   .hero-grid,
   .section-heading,
   .preview-grid,
-  .about-hero,
-  .thinking-record {
+  .about-hero {
     grid-template-columns: 1fr;
   }
 
@@ -980,11 +949,6 @@ a:focus-visible {
   .capability-card {
     grid-column: span 6;
   }
-
-  .contact-entry {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
 }
 
 @media (max-width: 720px) {
@@ -998,8 +962,7 @@ a:focus-visible {
 
   .page-panel,
   .rail-panel,
-  .map-shell,
-  .contact-card {
+  .map-shell {
     padding: 18px;
   }
 
@@ -1015,10 +978,6 @@ a:focus-visible {
 
   .capability-card {
     grid-column: span 12;
-  }
-
-  .thinking-record {
-    gap: 14px;
   }
 
   .connector-overlay {

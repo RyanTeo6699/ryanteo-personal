@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CapabilityMapPanel } from '../components/CapabilityMapPanel';
+import { ContactIconLinks } from '../components/ContactIconLinks';
 import { ProjectModule } from '../components/ProjectModule';
 import {
   aboutContent,
   avatarImageUrl,
   capabilities,
   contactContent,
-  contactLinks,
   getCapabilitiesForProject,
   getCapabilityById,
   getProjectById,
@@ -16,7 +16,6 @@ import {
   projects,
   quickLinks,
   selectedWorkContent,
-  thinkingEntries,
 } from '../data/site-data';
 
 type ActiveSelection =
@@ -217,7 +216,7 @@ export function HomePage() {
             </div>
             <p className="section-copy">
               The site is organized as one personal system: direct entry points for work,
-              capability mapping, thinking, biography, and contact.
+              capability mapping, biography, and contact.
             </p>
           </div>
 
@@ -303,34 +302,6 @@ export function HomePage() {
       <section className="page-panel">
         <div className="preview-grid">
           <div className="preview-card">
-            <span className="section-label">Thinking preview</span>
-            <h2 className="section-title section-title--compact">Product positions</h2>
-            <p className="section-copy">
-              A few of the operating statements that shape how I scope products and
-              judge whether they will actually hold up.
-            </p>
-            <div className="preview-actions">
-              <Link className="action-link action-link--primary" to="/thinking">
-                Open Thinking
-              </Link>
-            </div>
-          </div>
-
-          <div className="thinking-list">
-            {thinkingEntries.slice(0, 3).map((entry) => (
-              <article key={entry.id} className="thinking-record">
-                <span className="record-label">{entry.category}</span>
-                <p className="record-statement">{entry.statement}</p>
-                <p className="record-note">{entry.note}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="page-panel">
-        <div className="preview-grid">
-          <div className="preview-card">
             <span className="section-label">About preview</span>
             <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
             <p className="section-copy">{aboutContent.intro}</p>
@@ -360,41 +331,16 @@ export function HomePage() {
       </section>
 
       <section id="contact-preview" className="page-panel">
-        <div className="preview-grid">
-          <div className="preview-card">
-            <span className="section-label">Contact preview</span>
-            <h2 className="section-title section-title--compact">{contactContent.title}</h2>
-            <p className="section-copy">{contactContent.intro}</p>
-            <div className="preview-actions">
-              <Link className="action-link action-link--primary" to="/contact">
-                Open Contact
-              </Link>
+        <div className="system-grid">
+          <div className="section-heading">
+            <div className="system-grid">
+              <span className="section-label">Contact preview</span>
+              <h2 className="section-title section-title--compact">{contactContent.title}</h2>
             </div>
+            <p className="section-copy">{contactContent.intro}</p>
           </div>
 
-          <div className="contact-grid">
-            {contactLinks.map((link) =>
-              link.href ? (
-                <a
-                  key={link.id}
-                  className="contact-card"
-                  href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
-                >
-                  <span className="contact-label">{link.label}</span>
-                  <span className="contact-value">{link.value}</span>
-                  <p className="contact-note">{link.note}</p>
-                </a>
-              ) : (
-                <div key={link.id} className="contact-card">
-                  <span className="contact-label">{link.label}</span>
-                  <span className="contact-value">{link.value}</span>
-                  <p className="contact-note">{link.note}</p>
-                </div>
-              ),
-            )}
-          </div>
+          <ContactIconLinks />
         </div>
       </section>
     </div>

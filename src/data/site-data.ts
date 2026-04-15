@@ -33,19 +33,10 @@ export type Project = {
   relatedCapabilityIds: string[];
 };
 
-export type ThinkingEntry = {
-  id: string;
-  category: string;
-  statement: string;
-  note: string;
-};
-
 export type ContactLink = {
-  id: string;
+  id: 'email' | 'linkedin' | 'github';
   label: string;
-  value: string;
-  note: string;
-  href?: string;
+  href: string;
 };
 
 type CapabilityRecord = Omit<Capability, 'relatedProjectIds'>;
@@ -79,13 +70,6 @@ export const pageDirectory: PageDirectoryEntry[] = [
     to: '/about',
     summary:
       'A grounded personal page focused on product judgment, systems thinking, and execution across web, iOS, and applied AI.',
-  },
-  {
-    id: 'thinking',
-    label: 'Thinking',
-    to: '/thinking',
-    summary:
-      'An archive of thesis statements and working positions that shape how products should behave and hold together.',
   },
   {
     id: 'contact',
@@ -165,18 +149,18 @@ export const quickLinks: QuickLink[] = [
     to: '/projects',
   },
   {
-    id: 'thinking-page',
-    index: '04',
-    label: 'Thinking',
-    description: 'Read the product positions that shape how Ryan scopes, judges, and ships.',
-    to: '/thinking',
-  },
-  {
     id: 'about-page',
-    index: '05',
+    index: '04',
     label: 'About',
     description: 'See the personal context behind the work, systems bias, and execution style.',
     to: '/about',
+  },
+  {
+    id: 'contact-page',
+    index: '05',
+    label: 'Contact',
+    description: 'Open the compact contact surface for direct email, LinkedIn, and GitHub links.',
+    to: '/contact',
   },
 ];
 
@@ -373,59 +357,6 @@ export const aboutContent = {
   ],
 };
 
-export const thinkingPageContent = {
-  title: 'Thinking',
-  intro:
-    'Not a fake blog archive. Just the product positions and operating statements that keep the work sharp.',
-};
-
-export const thinkingEntries: ThinkingEntry[] = [
-  {
-    id: 'generic-ai-wrappers',
-    category: 'Product',
-    statement: 'I do not build generic AI wrappers.',
-    note:
-      'A product only becomes defensible when the workflow, structure, and operational logic are harder to copy than a model call.',
-  },
-  {
-    id: 'execution-vs-advice',
-    category: 'Execution',
-    statement: 'Advice is easy to copy. Execution is harder.',
-    note:
-      'The real difference appears in sequencing, follow-through, edge cases, and whether the product can survive actual use.',
-  },
-  {
-    id: 'friction-before-features',
-    category: 'UX',
-    statement: 'Good products reduce friction before they add features.',
-    note:
-      'Useful systems remove confusion, shorten loops, and make the next action more obvious before they expand the surface area.',
-  },
-  {
-    id: 'workflow-retention',
-    category: 'Retention',
-    statement:
-      'A real moat is built through workflow, retention, and accumulated structure.',
-    note:
-      'The more a product becomes part of how work happens, the more it compounds beyond the novelty layer.',
-  },
-  {
-    id: 'front-end-back-end',
-    category: 'Systems',
-    statement:
-      'The front end should feel clear and desirable. The back end should quietly become a system of record.',
-    note:
-      'The user should feel confidence up front while the system underneath gains reliability through consistent use and structure.',
-  },
-  {
-    id: 'suggestion-to-action',
-    category: 'AI Utility',
-    statement: 'I am interested in products that move from suggestion to action.',
-    note:
-      'The most useful AI products do not stop at recommending. They help users close the loop and actually get something done.',
-  },
-];
-
 export const contactContent = {
   title: 'Contact',
   intro:
@@ -436,22 +367,16 @@ export const contactLinks: ContactLink[] = [
   {
     id: 'email',
     label: 'Email',
-    value: 'ryanteo0628@gmail.com',
-    note: 'Best for direct conversations.',
     href: 'mailto:ryanteo0628@gmail.com',
   },
   {
     id: 'linkedin',
     label: 'LinkedIn',
-    value: 'ryanteo101',
-    note: 'Professional profile and background.',
     href: 'https://www.linkedin.com/in/ryanteo101/',
   },
   {
     id: 'github',
     label: 'GitHub',
-    value: 'RyanTeo6699',
-    note: 'Code and public work.',
     href: 'https://github.com/RyanTeo6699',
   },
 ];
