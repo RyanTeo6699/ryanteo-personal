@@ -1,9 +1,9 @@
 import type { MutableRefObject, RefObject } from 'react';
+import type { Capability, Project } from '../data/site-data';
+import { capabilityMapContent } from '../data/site-data';
 import { ConnectorOverlay } from './ConnectorOverlay';
-import type { Capability, Project } from '../data/homepage-data';
-import { capabilityMapContent } from '../data/homepage-data';
 
-type CapabilityMapSectionProps = {
+type CapabilityMapPanelProps = {
   projects: Project[];
   capabilities: Capability[];
   activeProjectIds: string[];
@@ -14,12 +14,12 @@ type CapabilityMapSectionProps = {
   onCapabilitySelect: (capabilityId: string) => void;
   onReset: () => void;
   canvasRef: RefObject<HTMLDivElement>;
-  mapProjectRefs: MutableRefObject<Record<string, HTMLButtonElement | null>>;
+  projectRefs: MutableRefObject<Record<string, HTMLButtonElement | null>>;
   capabilityRefs: MutableRefObject<Record<string, HTMLButtonElement | null>>;
   prefersReducedMotion: boolean;
 };
 
-export function CapabilityMapSection({
+export function CapabilityMapPanel({
   projects,
   capabilities,
   activeProjectIds,
@@ -30,50 +30,53 @@ export function CapabilityMapSection({
   onCapabilitySelect,
   onReset,
   canvasRef,
-  mapProjectRefs,
+  projectRefs,
   capabilityRefs,
   prefersReducedMotion,
-}: CapabilityMapSectionProps) {
+}: CapabilityMapPanelProps) {
   return (
-    <section className="home-section capability-section">
-      <div className="site-width section-stack">
-        <div className="section-top">
-          <div>
-            <span className="section-kicker">Capability map</span>
-            <h2 className="section-title">{capabilityMapContent.title}</h2>
+    <section id="capability-map" className="page-panel">
+      <div className="system-grid">
+        <div className="section-heading">
+          <div className="system-grid">
+            <span className="section-label">Capability map</span>
+            <h2 className="section-title section-title--compact">
+              {capabilityMapContent.title}
+            </h2>
           </div>
-          <div className="section-copy-block">
-            <p className="section-intro">{capabilityMapContent.intro}</p>
-            <p className="section-detail">{capabilityMapContent.supportingCopy}</p>
+
+          <div className="system-grid">
+            <p className="section-copy">{capabilityMapContent.intro}</p>
+            <p className="section-copy">{capabilityMapContent.supportingCopy}</p>
           </div>
         </div>
 
         <div className="map-shell">
-          <div className="map-shell-top">
-            <p className="map-status">{activeSummary}</p>
+          <div className="map-topline">
+            <p className="map-summary">{activeSummary}</p>
             <button
               type="button"
               className="map-reset"
               onClick={onReset}
               disabled={!hasSelection}
             >
-              Reset
+              Reset selection
             </button>
           </div>
 
           <div className="map-stage" ref={canvasRef}>
             <ConnectorOverlay
               canvasRef={canvasRef}
-              projectRefs={mapProjectRefs}
+              projectRefs={projectRefs}
               capabilityRefs={capabilityRefs}
               activeProjectIds={activeProjectIds}
               activeCapabilityIds={activeCapabilityIds}
               prefersReducedMotion={prefersReducedMotion}
             />
 
-            <div className="map-group">
-              <span className="map-label">Project anchors</span>
-              <div className="map-project-grid">
+            <div className="map-band">
+              <span className="panel-label">Project anchors</span>
+              <div className="map-band__grid">
                 {projects.map((project) => {
                   const isActive = activeProjectIds.includes(project.id);
                   const isDimmed = hasSelection && !isActive;
@@ -82,7 +85,7 @@ export function CapabilityMapSection({
                     <button
                       key={project.id}
                       ref={(node) => {
-                        mapProjectRefs.current[project.id] = node;
+                        projectRefs.current[project.id] = node;
                       }}
                       type="button"
                       className="map-project-node"
@@ -93,18 +96,21 @@ export function CapabilityMapSection({
                     >
                       <span className="map-project-index">{project.index}</span>
                       <span className="map-project-title">{project.title}</span>
-                      <span className="map-project-text">{project.positioning}</span>
+                      <p className="map-project-text">{project.positioning}</p>
+                      <span className="map-count">
+                        {project.relatedCapabilityIds.length} linked capabilities
+                      </span>
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            <div className="map-divider" aria-hidden="true" />
+            <div className="map-axis" aria-hidden="true" />
 
-            <div className="map-group">
-              <span className="map-label">Capabilities</span>
-              <div className="capability-grid">
+            <div className="map-band">
+              <span className="panel-label">Capability anchors</span>
+              <div className="map-band__grid">
                 {capabilities.map((capability) => {
                   const isActive = activeCapabilityIds.includes(capability.id);
                   const isDimmed = hasSelection && !isActive;
@@ -123,7 +129,10 @@ export function CapabilityMapSection({
                       onClick={() => onCapabilitySelect(capability.id)}
                     >
                       <span className="capability-title">{capability.label}</span>
-                      <span className="capability-description">{capability.description}</span>
+                      <p className="capability-description">{capability.description}</p>
+                      <span className="map-count">
+                        {capability.relatedProjectIds.length} linked projects
+                      </span>
                     </button>
                   );
                 })}
@@ -135,4 +144,3 @@ export function CapabilityMapSection({
     </section>
   );
 }
-

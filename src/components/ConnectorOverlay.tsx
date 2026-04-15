@@ -26,7 +26,7 @@ function buildConnectorPath(
   endY: number,
 ) {
   const verticalDistance = Math.abs(endY - startY);
-  const controlOffset = Math.max(28, Math.min(120, verticalDistance * 0.45));
+  const controlOffset = Math.max(24, Math.min(88, verticalDistance * 0.42));
 
   return `M ${startX} ${startY} C ${startX} ${startY + controlOffset} ${endX} ${
     endY - controlOffset
@@ -52,6 +52,7 @@ export function ConnectorOverlay({
 
     const updateLines = () => {
       const canvasRect = canvas.getBoundingClientRect();
+
       setBounds({
         width: canvasRect.width,
         height: canvasRect.height,
@@ -60,7 +61,7 @@ export function ConnectorOverlay({
       if (
         activeProjectIds.length === 0 ||
         activeCapabilityIds.length === 0 ||
-        canvasRect.width < 820
+        canvasRect.width < 720
       ) {
         setLines([]);
         return;
@@ -154,13 +155,6 @@ export function ConnectorOverlay({
       viewBox={`0 0 ${bounds.width} ${bounds.height}`}
       aria-hidden="true"
     >
-      <defs>
-        <linearGradient id="connector-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="rgba(184,107,42,0.16)" />
-          <stop offset="50%" stopColor="rgba(184,107,42,0.76)" />
-          <stop offset="100%" stopColor="rgba(227,171,94,0.2)" />
-        </linearGradient>
-      </defs>
       {lines.map((line) => (
         <g key={line.id}>
           <path className="connector-path-base" d={line.path} pathLength={1} />
@@ -172,12 +166,12 @@ export function ConnectorOverlay({
               prefersReducedMotion
                 ? undefined
                 : {
-                    animationDuration: '540ms',
+                    animationDuration: '360ms',
                   }
             }
           />
-          <circle className="connector-node" cx={line.startX} cy={line.startY} r={4} />
-          <circle className="connector-node" cx={line.endX} cy={line.endY} r={4} />
+          <circle className="connector-node" cx={line.startX} cy={line.startY} r={3.5} />
+          <circle className="connector-node" cx={line.endX} cy={line.endY} r={3.5} />
         </g>
       ))}
     </svg>

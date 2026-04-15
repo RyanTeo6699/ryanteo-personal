@@ -1,159 +1,420 @@
 # AGENTS.md
 
 ## Mission
-Build Ryan’s personal website as a high-signal personal brand site.
+Rebuild Ryan’s personal website into a cohesive multi-page retro system inspired by the approved reference direction and the provided HTML examples.
 
-The site must merge:
-- the minimalist editorial calm of the chosen reference direction
-- Ryan’s own projects, thinking, and execution identity
-- a relationship-driven capability map that connects skills/capabilities to selected work
+The website must no longer be treated as a single homepage-only exercise.
+It now needs a coherent site-wide design system across:
+- Home
+- Projects
+- About
+- Thinking / Blog
+- Contact
 
-This is not a generic portfolio.
-This is not a startup landing page.
-This is not an agency site.
+The approved style direction is now clear:
+- monochrome or near-monochrome
+- bold framed UI
+- thick black borders
+- retro operating-system / terminal / brutalist-web flavor
+- window-like cards
+- dotted or gridded backgrounds used with restraint
+- hard shadows
+- uppercase labels where appropriate
+- strong modular layout
+- personal but systemized identity
 
-The product being presented is Ryan himself:
-- his judgment
-- his work
-- his systems thinking
-- his technical execution
-- his product philosophy
+This is not luxury editorial.
+This is not quiet serif minimalism.
+This is not a generic portfolio theme.
+
+This is Ryan’s personal operating surface.
 
 ---
 
-## Core Product Positioning
+## Direction Lock
 
-The site should communicate one thing clearly:
+The visual language must follow the approved reference family represented by:
+- the original retro personal-site screenshot
+- the provided About / Projects / Blog HTML examples
 
-Ryan builds AI products, systems, and leverage.
+Use those references as style translation targets.
 
-Everything on the site must reinforce that positioning.
+That means:
+- strong top nav
+- optional desktop side rail if it improves coherence
+- framed content modules
+- sharp monochrome contrast
+- “system file / terminal / archive” visual metaphors
+- bold section titles
+- hard-edged buttons and cards
+- grid / dotted background texture used in moderation
+- strong graphic identity
+
+Do NOT drift back toward:
+- beige founder portfolio
+- elegant serif-led hero
+- soft premium SaaS landing page
+- thin-line luxury minimalism
+- weak card boundaries
+- low-contrast UI
+
+---
+
+## Product Intent
+
+The website still presents Ryan as the product.
+
+But the presentation style must make him feel like:
+- a builder
+- an operator
+- a systems thinker
+- a product architect
+- a technically credible founder
+- someone with a distinct point of view
 
 The site should feel:
+- bold
+- memorable
+- boxed
+- technical
 - personal
-- sharp
-- editorial
-- modern
-- controlled
-- technically credible
-- strategically opinionated
+- interactive
+- structured
+- high-signal
 
-It must not feel:
+Not:
 - corporate
-- overdesigned
-- noisy
-- template-like
+- soft
 - decorative
-- like a junior developer résumé
-- like an agency selling services
+- overpolished
+- generic
+- like a template demo with placeholder energy
 
 ---
 
-## Primary Goals
+## Site Structure
 
-1. Establish immediate identity
-- Who Ryan is
-- What he builds
-- What kind of work he does
+The site should support these primary surfaces:
 
-2. Show proof through selected work
-- real projects
-- real product direction
-- real capability signals
+1. Home
+2. Projects
+3. About
+4. Thinking or Blog
+5. Contact
 
-3. Show how Ryan thinks
-- product philosophy
-- execution philosophy
-- AI/product/system beliefs
+If the repo currently uses a single-page architecture, preserve it only if it can still deliver clear section-based navigation and the same visual system consistently.
+If multi-page routing already exists or is easy to support cleanly, use it.
 
-4. Create a memorable interaction layer
-- capability-to-project relationship map
-- click a capability -> reveal linked work
-- interaction should reinforce structure and competence
-
-5. Create clean conversion paths
-- work
-- contact
-- external profiles
-- future collaboration
+Do not add random extra pages.
 
 ---
 
-## Structural Requirements
+## Global Design System Rules
 
-The homepage should contain these sections in this order unless the repo strongly suggests a better equivalent:
+### 1. Color
+Primary palette:
+- black
+- off-white
+- light gray
+- charcoal
+- limited gray hierarchy
+
+Optional accent:
+- only if subtle and justified
+- must not dominate the monochrome system
+
+Do not use:
+- beige luxury tones as the main identity
+- multiple saturated accent colors
+- glossy gradient-heavy modern startup styling
+
+### 2. Typography
+Typography should feel bold, graphic, and controlled.
+
+Preferred behavior:
+- large display headings
+- compact uppercase labels
+- simple readable body copy
+- heavy emphasis on hierarchy
+
+Avoid:
+- elegant serif hero headlines
+- overly soft paragraph-first composition
+- too many decorative font combinations
+
+### 3. Borders and Containers
+This is critical.
+
+Use:
+- thick black borders
+- framed containers
+- strong section dividers
+- hard shadows where appropriate
+- window-header treatments for cards/modules if helpful
+
+Avoid:
+- invisible surfaces
+- vague soft card separation
+- shadow-only structure
+- weak pills and ghost tags as the dominant UI language
+
+### 4. Background Texture
+Allowed:
+- subtle dotted grid
+- subtle matrix-like paper texture
+- light technical patterning
+
+But use it with control.
+Texture should support structure, not create noise.
+
+### 5. Motion
+Motion must be tight and crisp.
+
+Allowed:
+- small hover shifts
+- invert hover states
+- hard-shadow transitions
+- subtle scale on imagery
+- capability-map highlight transitions
+- smooth scroll for anchor navigation
+
+Avoid:
+- floaty luxury motion
+- excessive fades
+- ornamental parallax
+- animation without function
+
+---
+
+## Navigation Rules
+
+### Top Navigation
+Must feel strong and intentional.
+Not invisible.
+
+Use:
+- thick bottom border
+- bold labels
+- strong spacing
+- active-state clarity
+- fixed top behavior if it helps the system
+
+Suggested items:
+- Home
+- Projects
+- Thinking
+- About
+- Contact
+
+### Optional Side Rail
+A desktop side rail is allowed if it strengthens the system and remains coherent.
+If used:
+- it must feel useful, not cosplay
+- it must not crowd the content
+- mobile must degrade cleanly
+
+### Mobile Navigation
+Must remain strong, simple, and readable.
+No tiny weak icons.
+No broken boxed language.
+
+---
+
+## Home Page Rules
+
+The homepage should include, in this order unless the repo strongly suggests a better equivalent:
 
 1. Hero
-2. Selected Work
-3. Capability Map
-4. Thinking / Thesis
-5. About
-6. Contact
+2. Quick Links
+3. Selected Work
+4. Capability Map
+5. Thinking Preview
+6. About Preview
+7. Contact
 
-Do not add extra filler sections unless they clearly improve the site.
-
-Do not add:
-- testimonials
-- fake client logos
-- pricing
-- service packages
-- meaningless stats
-- decorative timelines with no narrative value
-
----
-
-## Section Rules
-
-### 1. Hero
-Hero must be extremely clear and restrained.
-
+### Hero
 Required content:
 - Ryan
-- one-line positioning
-- short supporting paragraph
-- two CTAs
-
-Recommended positioning:
 - Building AI products, systems, and leverage.
+- concise supporting copy
+- strong boxed CTA(s)
 
-Hero should feel immediate and confident.
-Do not make it verbose.
-Do not bury the value proposition.
+The hero should be more graphic than the previous wrong version.
+It should feel immediate and systemized.
 
-### 2. Selected Work
-This is one of the two most important sections.
+### Quick Links
+Bring back a clearly boxed quick-link strip.
+This is part of the approved visual language.
+It should feel like fast system navigation.
 
-Use real projects as the main proof layer:
+### Selected Work
+Show:
 - ImmiPilot
 - Shiok
 - You Wife List
 - Bento AIII
 
-Each card/item should communicate:
-- project name
-- short one-line positioning
-- Ryan’s role or angle
+Presentation:
+- framed modules or window cards
+- strong title hierarchy
+- concise summaries
+- visible affordance
+
+Do not present them as soft enterprise list rows.
+
+### Capability Map
+This remains a key differentiator.
+
+Required behavior:
+- click capability -> highlight related projects
+- click project -> highlight related capabilities
+- unrelated items recede
+- scroll-to-related remains functional
+- keyboard accessible
+- strong active state
+
+The visual styling of this section must match the site-wide retro system.
+
+### Thinking Preview
+Should preview short thesis statements or recent writing entries.
+Can feel like log entries or archived notes.
+
+### About Preview
+Short and direct.
+Do not turn into a résumé dump.
+
+### Contact
+Direct links only.
+Minimal but framed.
+
+---
+
+## Projects Page Rules
+
+The Projects page should strongly follow the provided HTML reference direction, but with Ryan’s real projects and content.
+
+Use:
+- large “PROJECTS” heading
+- framed project cards
+- optional window-style card headers
+- monochrome imagery treatment if imagery is used
+- strong CTA buttons
+- consistent layout rhythm
+
+Replace placeholder content with Ryan’s real content:
+- ImmiPilot
+- Shiok
+- You Wife List
+- Bento AIII
+- optionally “Selected Experiments” only if grounded in real work
+
+Do not use fake project names or lorem ipsum.
+
+Each project card should communicate:
+- what it is
+- why it matters
+- Ryan’s role/angle
 - related capabilities
 
-Do not overload the homepage with full case studies.
-Keep it tight, high-signal, and scannable.
+---
 
-### 3. Capability Map
-This is the main interaction differentiator.
+## About Page Rules
 
-It must include:
-- a set of capability cards
-- a set of linked project cards
-- click behavior that reveals relationships
-- active states
-- scroll-to-related behavior
-- visual relationship indicators
-- graceful fallback on smaller screens
+The About page should feel systemized and personal.
 
-This section must communicate that Ryan’s abilities are not isolated tools.
-They are part of systems that connect to shipped work.
+It may use:
+- a framed portrait area or abstract avatar block
+- short profile metadata rows
+- bold heading
+- concise philosophy-oriented biography
+- capability chips or structured areas
 
-Recommended capability set:
+But it must remain about Ryan, not the reference persona.
+
+Do not use fake location strings, fake operator metadata, or fictional roleplay content unless converted into a subtle stylistic wrapper grounded in truth.
+No cosplay nonsense.
+
+Ground it in Ryan’s actual positioning:
+- builder
+- operator
+- AI product systems
+- web and iOS execution
+- workflow logic
+- strategic product thinking
+
+---
+
+## Thinking / Blog Page Rules
+
+This page should feel like:
+- notes
+- logs
+- theses
+- articles
+- product thinking archive
+
+It may visually borrow from the provided blog reference:
+- framed entries
+- archive-like modules
+- sidebar filters or search only if they are useful and not empty theater
+
+If there is not enough real article content yet:
+- use a “Thinking” page instead of a fake full blog
+- populate with thesis entries, short notes, and point-of-view statements
+- do not fabricate a content machine
+
+Quality over fake volume.
+
+---
+
+## Contact Rules
+
+The contact surface should be minimal, direct, and framed.
+
+Support:
+- Email
+- GitHub
+- LinkedIn
+- X
+
+Use the system style:
+- thick borders
+- bold labels
+- direct affordance
+- no bloated footer link farms
+
+---
+
+## Content Rules
+
+Keep Ryan’s real positioning and copy direction.
+
+Core positioning:
+Ryan builds AI products, systems, and leverage.
+
+Approved supporting direction:
+- workflow matters more than novelty
+- execution is harder to copy than advice
+- systems matter more than surface theatrics
+- products should move from suggestion to action
+- front-end clarity should connect to back-end structural value
+
+Do not use:
+- generic motivational language
+- fake founder clichés
+- filler biography
+- placeholder lorem ipsum
+- fictional technical mythology
+
+The references are style references, not content references.
+
+---
+
+## Capability Map Technical Rules
+
+The capability-to-project relationship system must stay.
+
+Required capabilities:
 - Product Systems
 - AI Workflow Design
 - SwiftUI / iOS
@@ -163,293 +424,50 @@ Recommended capability set:
 - Execution
 - LLM Productization
 
-### 4. Thinking / Thesis
-This section must make Ryan feel like someone with judgment, not just implementation ability.
+Required linked projects:
+- ImmiPilot
+- Shiok
+- You Wife List
+- Bento AIII
 
-Use short, strong statements.
-Not motivational fluff.
-Not startup clichés.
+Required behavior:
+- active capability highlights related projects
+- active project highlights related capabilities
+- unrelated items visually recede
+- scrolling to first related project remains functional
+- robust keyboard accessibility
+- strong active/inactive contrast
+- graceful responsive fallback
 
-Examples of direction:
-- I do not build generic AI wrappers.
-- Advice is easy to copy. Execution is harder.
-- Good products reduce friction before they add features.
-- A moat is built through workflow, retention, and accumulated structure.
-
-Format should be concise and editorial.
-
-### 5. About
-Short, focused, human.
-Not a life story.
-Not a résumé dump.
-
-The About section should answer:
-- what Ryan works on
-- what he cares about
-- how he approaches product and systems
-
-### 6. Contact
-Minimal, direct, useful.
-
-Include only high-value links such as:
-- Email
-- GitHub
-- LinkedIn
-- X
-
-No bloated footer link farms.
-
----
-
-## Design Direction
-
-The chosen visual direction is:
-- editorial minimalism
-- high contrast
-- strong typography
-- generous spacing
-- restrained interactivity
-- subtle personality
-- calm but sharp composition
-
-The site should borrow the spirit of minimalist editorial personal sites:
-- clean navigation
-- strong name-first identity
-- simple content hierarchy
-- list/grid balance
-- quiet confidence
-
-But it must be rebuilt around Ryan’s own content and interaction model.
-
-Do not copy:
-- exact layouts pixel for pixel
-- exact wording
-- exact compositions
-- exact card arrangements
-- exact color proportions
-- exact brand tone
-
-Translate the style.
-Do not imitate the artifact.
-
----
-
-## Visual Rules
-
-### Typography
-Typography carries a large part of the design.
-It must feel deliberate.
-
-Use:
-- strong heading scale
-- restrained body copy
-- clear hierarchy
-- generous line spacing
-- crisp contrast
-
-Avoid:
-- giant blocks of text
-- too many font weights
-- novelty typography
-- decorative type treatments that reduce clarity
-
-### Layout
-Use editorial spacing and rhythm.
-
-The page should breathe.
-Sections should feel intentional and separated.
-There should be visible structure without excessive lines or containers.
-
-Avoid:
-- cramped grids
-- random card clutter
-- too many simultaneous focal points
-- oversized UI chrome
-
-### Color
-Prefer:
-- near-black / charcoal / warm off-white
-- restrained neutrals
-- one controlled accent if needed
-
-Avoid:
-- rainbow gradients
-- loud neon overload
-- multiple competing accents
-- agency-style glossy color noise
-
-### Motion
-Motion must be subtle and functional.
-
-Allowed:
-- hover lifts
-- fade/reveal transitions
-- smooth scrolling
-- capability map line animation
-- small opacity/state transitions
-
-Avoid:
-- parallax overload
-- spinning gimmicks
-- endless floating elements
-- animation that distracts from reading
-
----
-
-## Capability Map Rules
-
-This section is non-negotiable.
-
-### Purpose
-To show how Ryan’s capabilities connect to real work.
-
-### Required behavior
-When clicking a capability:
-- capability becomes active
-- related projects become active
-- unrelated projects recede
-- unrelated capabilities recede slightly
-- viewport scrolls to the first relevant project
-- visual relationship cues appear
-
-When clicking a project:
-- project becomes active
-- related capabilities become active
-- relationship is visible in reverse
-
-### Technical expectations
-- data-driven structure
-- dynamic relationship mapping
-- accessible interaction
-- responsive behavior
-- no brittle one-screen-only line hacks
-
-Preferred model:
-- skills/capabilities as structured data
-- projects as structured data
-- active state managed centrally
-- SVG overlay or equivalent robust relationship rendering on larger screens
-- simplified fallback on small screens if needed
-
-### UX expectations
-- immediate comprehension
-- no confusion about what is clickable
-- obvious active vs inactive state
-- no reliance on connector lines alone for meaning
-
----
-
-## Content Rules
-
-Every sentence must earn its place.
-
-Do not use filler phrases such as:
-- passionate about technology
-- love innovation
-- always learning
-- results-driven professional
-- creative problem solver
-
-These are empty.
-
-Prefer statements with actual signal:
-- what Ryan builds
-- how Ryan thinks
-- what kind of systems he prefers
-- what his projects prove
-
-The copy should sound:
-- calm
-- precise
-- high-agency
-- credible
-- selective
-
-Not:
-- salesy
-- overhyped
-- self-congratulatory
-- vague
-
----
-
-## Project Presentation Rules
-
-Projects are proof, not decoration.
-
-Each project entry should show:
-- what it is
-- why it matters
-- what Ryan did
-- what capability it represents
-
-Do not present projects as generic thumbnails with no narrative meaning.
-
-Recommended homepage project descriptions should stay concise.
-Detailed project pages can be deeper later if needed.
-
----
-
-## Accessibility Rules
-
-- keyboard accessible navigation
-- focus-visible states
-- semantic interactive elements
-- sufficient contrast
-- reduced-motion respect where practical
-- interaction still understandable without animation
-
-The site should remain usable even if advanced interaction or lines fail.
-
----
-
-## Responsive Rules
-
-### Desktop
-- full editorial layout
-- strongest typography
-- capability map with full relationship presentation
-
-### Tablet
-- preserve hierarchy
-- preserve interaction
-- simplify spacing carefully
-- keep capability map usable
-
-### Mobile
-- stack cleanly
-- protect readability first
-- capability map may simplify visually
-- highlighting and relationship logic must remain functional
-- no broken layouts or tiny unreadable cards
-
-Mobile should feel intentionally adapted, not squeezed.
+Do not let the section look like a leftover component from another design language.
 
 ---
 
 ## Engineering Rules
 
-- preserve repo conventions
-- do not introduce heavy dependencies without need
+- audit the repo first
+- identify the current architecture
+- decide whether single-page or multi-page is cleaner inside the existing stack
+- preserve data-driven rendering where possible
+- remove obsolete styling from the previous wrong direction
+- do not leave mixed aesthetic systems alive
+- refactor aggressively if required for coherence
 - keep components modular
-- reuse existing styles/tokens where appropriate
-- prefer data-driven rendering
-- if structure changes, update all call sites in the same round
-- do not leave dead code behind
+- keep code readable
+- update all call sites if props/data structures change
+- no dead code
 
-Likely component structure:
-- Hero section
-- SelectedWork section
-- CapabilityMap section
-- Thinking section
-- About section
-- Contact section
-
-Possible helper/data modules:
-- project data
-- capability data
-- relationship mapping
-- shared section wrappers
+Likely reusable design primitives:
+- site shell
+- top nav
+- side rail
+- section frame
+- window card
+- boxed button
+- tag/chip
+- archive row
+- capability card
+- project card
 
 ---
 
@@ -457,44 +475,39 @@ Possible helper/data modules:
 
 The sprint is only done when:
 
-1. The homepage clearly communicates Ryan’s positioning
-2. Selected Work feels like real proof, not filler
-3. Capability Map interaction works cleanly
-4. Thinking / Thesis adds intellectual signal
-5. The site feels editorial, minimal, and personal
-6. The design does not feel like a pasted template
-7. The site works on desktop, tablet, and mobile
-8. Build/typecheck passes
-9. No copied external copy or branding appears
-10. The site feels like Ryan, not like a generic portfolio starter
+1. The entire site clearly follows the approved retro monochrome system
+2. The old beige serif aesthetic is gone
+3. Home, Projects, About, and Thinking/Blog feel like one family
+4. Ryan’s real content replaces placeholder demo content
+5. Selected Work is visually strong and framed
+6. Capability Map still works and matches the system
+7. Navigation is bold and clear
+8. Responsive behavior is coherent
+9. Build passes cleanly
+10. The result feels like Ryan’s personal operating surface, not a template clone
 
 ---
 
 ## Output Rules
 
-When finishing the sprint, always provide:
-
+When finishing, always provide:
 1. Brief summary
 2. Updated file tree
 3. Full contents of all modified/new files
-4. Notes on homepage structure
-5. Notes on capability/project data mapping
-6. Exact verification steps
-7. Any responsive caveats
+4. Notes on the site-wide visual system
+5. Notes on page structure decisions
+6. Notes on capability-map styling and behavior
+7. Exact verification steps
+8. Any responsive caveats
 
 Do not provide partial diffs only.
 Do not omit modified files.
-Do not leave important decisions unexplained.
+Do not leave placeholder references half alive.
 
 ---
 
 ## Final Principle
 
-Do not build a stylish shell.
+Do not merely restyle the homepage.
 
-Build a personal website that makes Ryan feel like:
-- a builder
-- an operator
-- a product thinker
-- a systems person
-- someone worth remembering
+Rebuild the whole site into a coherent retro personal system using Ryan’s real content and the approved reference language.
