@@ -1,15 +1,12 @@
 import { useLayoutEffect, useState } from 'react';
 import type { MutableRefObject, RefObject } from 'react';
 
-type ActiveKind = 'project' | 'skill' | null;
-
 type ConnectorOverlayProps = {
   canvasRef: RefObject<HTMLDivElement>;
   projectRefs: MutableRefObject<Record<string, HTMLButtonElement | null>>;
-  skillRefs: MutableRefObject<Record<string, HTMLButtonElement | null>>;
-  activeKind: ActiveKind;
+  capabilityRefs: MutableRefObject<Record<string, HTMLButtonElement | null>>;
   activeProjectIds: string[];
-  activeSkillIds: string[];
+  activeCapabilityIds: string[];
   prefersReducedMotion: boolean;
 };
 
@@ -39,10 +36,9 @@ function buildConnectorPath(
 export function ConnectorOverlay({
   canvasRef,
   projectRefs,
-  skillRefs,
-  activeKind,
+  capabilityRefs,
   activeProjectIds,
-  activeSkillIds,
+  activeCapabilityIds,
   prefersReducedMotion,
 }: ConnectorOverlayProps) {
   const [lines, setLines] = useState<ConnectorLine[]>([]);
@@ -62,10 +58,9 @@ export function ConnectorOverlay({
       });
 
       if (
-        activeKind === null ||
         activeProjectIds.length === 0 ||
-        activeSkillIds.length === 0 ||
-        canvasRect.width < 768
+        activeCapabilityIds.length === 0 ||
+        canvasRect.width < 820
       ) {
         setLines([]);
         return;
@@ -82,23 +77,25 @@ export function ConnectorOverlay({
 
         const projectRect = projectNode.getBoundingClientRect();
 
-        activeSkillIds.forEach((skillId) => {
-          const skillNode = skillRefs.current[skillId];
+        activeCapabilityIds.forEach((capabilityId) => {
+          const capabilityNode = capabilityRefs.current[capabilityId];
 
-          if (!skillNode) {
+          if (!capabilityNode) {
             return;
           }
 
-          const skillRect = skillNode.getBoundingClientRect();
-          const upperRect = projectRect.top <= skillRect.top ? projectRect : skillRect;
-          const lowerRect = projectRect.top <= skillRect.top ? skillRect : projectRect;
+          const capabilityRect = capabilityNode.getBoundingClientRect();
+          const upperRect =
+            projectRect.top <= capabilityRect.top ? projectRect : capabilityRect;
+          const lowerRect =
+            projectRect.top <= capabilityRect.top ? capabilityRect : projectRect;
           const startX = upperRect.left + upperRect.width / 2 - canvasRect.left;
           const startY = upperRect.bottom - canvasRect.top;
           const endX = lowerRect.left + lowerRect.width / 2 - canvasRect.left;
           const endY = lowerRect.top - canvasRect.top;
 
           nextLines.push({
-            id: `${projectId}-${skillId}`,
+            id: `${projectId}-${capabilityId}`,
             path: buildConnectorPath(startX, startY, endX, endY),
             startX,
             startY,
@@ -125,7 +122,7 @@ export function ConnectorOverlay({
       }
     });
 
-    Object.values(skillRefs.current).forEach((node) => {
+    Object.values(capabilityRefs.current).forEach((node) => {
       if (node) {
         observer.observe(node);
       }
@@ -139,11 +136,10 @@ export function ConnectorOverlay({
     };
   }, [
     canvasRef,
-    activeKind,
     activeProjectIds,
-    activeSkillIds,
+    activeCapabilityIds,
     projectRefs,
-    skillRefs,
+    capabilityRefs,
   ]);
 
   if (bounds.width === 0 || bounds.height === 0) {
