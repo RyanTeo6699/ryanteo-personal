@@ -34,7 +34,6 @@ type ProjectRecord = Omit<Project, 'relatedCapabilityIds'>;
 
 export const siteIdentity = {
   name: 'Ryan Teo',
-  tagline: 'Building AI products, systems, and leverage.',
 };
 
 export const avatarImageUrl = new URL('../../素材/头像.JPG', import.meta.url).href;
@@ -61,18 +60,6 @@ export const siteNavLinks: SiteNavLink[] = [
     href: '#contact',
   },
 ];
-
-export const heroContent = {
-  primaryLine: 'Building AI products, systems, and leverage.',
-  primaryCta: {
-    label: 'View Work',
-    targetId: 'work',
-  },
-  secondaryCta: {
-    label: 'Get in Touch',
-    targetId: 'contact',
-  },
-};
 
 const capabilityRecords: CapabilityRecord[] = [
   {

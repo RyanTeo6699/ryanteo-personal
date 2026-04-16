@@ -11,7 +11,6 @@ import {
   getCapabilityById,
   getProjectById,
   getProjectsForCapability,
-  heroContent,
   projects,
   selectedWorkContent,
 } from '../data/site-data';
@@ -92,19 +91,6 @@ export function HomePage() {
     });
   }, [activeProjectIds, activeSelection, prefersReducedMotion]);
 
-  const scrollToSection = (sectionId: string) => {
-    const target = document.getElementById(sectionId);
-
-    if (!target) {
-      return;
-    }
-
-    target.scrollIntoView({
-      behavior: prefersReducedMotion ? 'auto' : 'smooth',
-      block: 'start',
-    });
-  };
-
   const toggleProject = (projectId: string) => {
     setActiveSelection((current) => {
       if (current?.type === 'project' && current.id === projectId) {
@@ -144,33 +130,7 @@ export function HomePage() {
 
   return (
     <div className="home-flow">
-      <section className="hero-section anchor-section" id="hero">
-        <div className="hero-layout">
-          <div className="hero-copy-block">
-            <h1 className="hero-title">{heroContent.primaryLine}</h1>
-
-            <div className="hero-actions">
-              <button
-                type="button"
-                className="action-link action-link--primary"
-                onClick={() => scrollToSection(heroContent.primaryCta.targetId)}
-              >
-                {heroContent.primaryCta.label}
-              </button>
-
-              <button
-                type="button"
-                className="action-link"
-                onClick={() => scrollToSection(heroContent.secondaryCta.targetId)}
-              >
-                {heroContent.secondaryCta.label}
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="content-section profile-section anchor-section">
+      <section className="content-section profile-section">
         <div className="profile-layout">
           <div className="profile-media">
             <div className="profile-portrait-shell">
@@ -202,7 +162,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="content-section about-me-section">
+      <section id="about" className="content-section about-me-section anchor-section">
         <div className="about-me-layout">
           <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
 

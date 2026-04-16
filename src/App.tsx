@@ -19,7 +19,6 @@ export default function App() {
         <div className="site-footer__inner">
           <div className="site-footer__brand">
             <p className="site-footer__name">{siteIdentity.name}</p>
-            <p className="site-footer__tagline">{siteIdentity.tagline}</p>
           </div>
         </div>
       </footer>
