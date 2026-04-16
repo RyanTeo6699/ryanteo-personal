@@ -12,50 +12,28 @@ type ProjectModuleProps = {
 type ProjectModuleBodyProps = {
   project: Project;
   capabilityLabels: string[];
-  moduleLabel: string;
-  whyItMattersLabel: string;
-  angleLabel: string;
-  roleLabel: string;
   capabilityTagsAriaLabel: string;
 };
 
 function ProjectModuleBody({
   project,
   capabilityLabels,
-  moduleLabel,
-  whyItMattersLabel,
-  angleLabel,
-  roleLabel,
   capabilityTagsAriaLabel,
 }: ProjectModuleBodyProps) {
   return (
     <>
       <div className="module-topline">
         <span className="module-index">{project.index}</span>
-        <span className="module-label">{moduleLabel}</span>
       </div>
 
       <div className="module-header">
         <h3 className="module-title">{project.title}</h3>
-        <p className="module-positioning">{project.positioning}</p>
+        <p className="module-positioning">{project.summary}</p>
       </div>
 
       <div className="module-fields">
-        <div className="project-field">
-          <span className="project-field__label">{whyItMattersLabel}</span>
-          <p className="project-field__value">{project.whyItMatters}</p>
-        </div>
-
-        <div className="project-field">
-          <span className="project-field__label">{angleLabel}</span>
-          <p className="project-field__value">{project.angle}</p>
-        </div>
+        <p className="project-field__value">{project.detail}</p>
       </div>
-
-      <p className="module-role">
-        <span className="module-role__label">{roleLabel}</span>
-        <span className="module-role__value">{project.role}</span>
-      </p>
 
       <div className="capability-tags" aria-label={capabilityTagsAriaLabel}>
         {capabilityLabels.map((label) => (
@@ -88,10 +66,6 @@ export function ProjectModule({
     <ProjectModuleBody
       project={project}
       capabilityLabels={capabilityLabels}
-      moduleLabel={siteData.selectedWorkContent.moduleLabel}
-      whyItMattersLabel={siteData.selectedWorkContent.whyItMattersLabel}
-      angleLabel={siteData.selectedWorkContent.angleLabel}
-      roleLabel={siteData.selectedWorkContent.roleLabel}
       capabilityTagsAriaLabel={siteData.selectedWorkContent.capabilityTagsAriaLabel(project.title)}
     />
   );

@@ -18,10 +18,8 @@ export type Project = {
   id: string;
   index: string;
   title: string;
-  positioning: string;
-  whyItMatters: string;
-  angle: string;
-  role: string;
+  summary: string;
+  detail: string;
   relatedCapabilityIds: string[];
 };
 
@@ -129,10 +127,8 @@ export function createSiteData(messages: LocaleMessages) {
     return {
       ...project,
       title: projectCopy.title,
-      positioning: projectCopy.positioning,
-      whyItMatters: projectCopy.whyItMatters,
-      angle: projectCopy.angle,
-      role: projectCopy.role,
+      summary: projectCopy.summary,
+      detail: projectCopy.detail,
       relatedCapabilityIds: relationshipPairs
         .filter((pair) => pair.projectId === project.id)
         .map((pair) => pair.capabilityId),

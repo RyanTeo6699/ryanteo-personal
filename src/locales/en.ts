@@ -54,12 +54,8 @@ const en: LocaleMessages = {
     ],
   },
   capabilityMap: {
-    kicker: 'Capability map',
     title: 'Capability Map',
-    intro:
-      'This is the working model. Click a capability or project to trace how the relationships actually connect.',
-    supportingCopy:
-      'I do not present skills as a static stack. I present the links between systems thinking, execution, and shipped work.',
+    subtitle: 'A structured view of how capability connects to shipped work.',
     defaultSummary: 'Select a project or capability to see how the work connects.',
     activeProjectSummary: (projectTitle) =>
       `Showing the capabilities connected to ${projectTitle}.`,
@@ -72,20 +68,12 @@ const en: LocaleMessages = {
     linkedProjectsLabel: (count) => `${count} linked projects`,
   },
   selectedWork: {
-    kicker: 'Selected work',
     title: 'Selected Work',
-    intro:
-      'A relationship-driven archive of products, systems, and platforms I have been shaping across AI, workflow, consumer utility, and digital presence.',
-    moduleLabel: 'Selected work',
-    whyItMattersLabel: 'Why it matters',
-    angleLabel: "Ryan's angle",
-    roleLabel: 'Role',
     capabilityTagsAriaLabel: (projectTitle) => `${projectTitle} capability tags`,
   },
   contact: {
-    kicker: 'Contact',
     title: 'Contact',
-    intro: 'Direct channels for selected conversations around products, systems, and applied AI.',
+    subtitle: 'Open to selected conversations around products, systems, and applied AI.',
     linksAriaLabel: 'Contact links',
     labels: {
       email: 'Email',
@@ -146,39 +134,27 @@ const en: LocaleMessages = {
   projects: {
     'immi-pilot': {
       title: 'ImmiPilot',
-      positioning: 'A compliance-driven workflow platform for immigration execution.',
-      whyItMatters:
-        'It treats complex immigration work as a structured operating flow with checkpoints, review, and accountability instead of a loose AI chat experience.',
-      angle:
+      summary: 'A compliance-driven workflow platform for immigration execution.',
+      detail:
         'Built around structured workflows, consultant review, and execution logic rather than generic AI chat.',
-      role: 'Product framing, workflow logic, LLM system design, and web execution.',
     },
     shiok: {
       title: 'Shiok',
-      positioning: 'An AI-assisted dining and behavioral bookkeeping product.',
-      whyItMatters:
-        'It uses constrained decisions and post-meal feedback loops to make dining data more useful than passive logging.',
-      angle:
+      summary: 'An AI-assisted dining and behavioral bookkeeping product.',
+      detail:
         'Designed around real user behavior, constrained decision-making, and post-meal feedback loops.',
-      role: 'Consumer product framing, native loop design, AI utility shaping, and execution.',
     },
     'you-wife-list': {
       title: 'You Wife List',
-      positioning: 'A closed-loop shopping and home inventory system.',
-      whyItMatters:
-        'It connects planning, purchasing, storage, and consumption into a single household workflow instead of isolated list features.',
-      angle:
+      summary: 'A closed-loop shopping and home inventory system.',
+      detail:
         'Built to connect planning, purchasing, inventory, and consumption into one usable household workflow.',
-      role: 'Systems design, iOS utility thinking, workflow simplification, and execution.',
     },
     'bento-aiii': {
       title: 'Bento AIII',
-      positioning: 'A digital presence system for an AI-native company.',
-      whyItMatters:
-        'It turns positioning, technical direction, and capability into a web system that can communicate clearly without startup filler.',
-      angle:
-        'A brand-facing and narrative-facing web system designed to express positioning, capability, and technical direction with clarity.',
-      role: 'Narrative system design, web experience architecture, automation thinking, and execution.',
+      summary: 'A digital presence system for an AI-native company.',
+      detail:
+        'A brand-facing web system designed to express positioning, capability, and technical direction with clarity.',
     },
   },
 };

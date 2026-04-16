@@ -209,14 +209,10 @@ export function HomePage() {
 
       <section id="work" className="content-section anchor-section">
         <div className="section-stack">
-          <div className="section-heading">
-            <div className="section-stack section-stack--tight">
-              <span className="section-kicker">{siteData.selectedWorkContent.kicker}</span>
-              <h2 className="section-title section-title--compact">
-                {siteData.selectedWorkContent.title}
-              </h2>
-            </div>
-            <p className="section-copy">{siteData.selectedWorkContent.intro}</p>
+          <div className="section-stack section-stack--tight">
+            <h2 className="section-title section-title--compact">
+              {siteData.selectedWorkContent.title}
+            </h2>
           </div>
 
           <div className="projects-grid">
@@ -244,13 +240,10 @@ export function HomePage() {
       <section id="contact" className="content-section content-section--compact anchor-section">
         <div className="contact-section">
           <div className="section-heading contact-heading">
-            <div className="section-stack section-stack--tight">
-              <span className="section-kicker">{siteData.contactContent.kicker}</span>
-              <h2 className="section-title section-title--compact">
-                {siteData.contactContent.title}
-              </h2>
-            </div>
-            <p className="section-copy">{siteData.contactContent.intro}</p>
+            <h2 className="section-title section-title--compact">
+              {siteData.contactContent.title}
+            </h2>
+            <p className="section-copy">{siteData.contactContent.subtitle}</p>
           </div>
 
           <ContactIconLinks />

@@ -12,9 +12,9 @@ const zhSG: LocaleMessages = {
     primaryNavigationAriaLabel: '主导航',
   },
   navigation: {
-    work: '作品',
+    work: '项目',
     capability: '能力',
-    about: '关于',
+    about: '关于我',
     contact: '联系',
   },
   languageSwitcher: {
@@ -23,42 +23,39 @@ const zhSG: LocaleMessages = {
   profile: {
     metadata: [
       {
-        label: '聚焦',
-        value: 'AI 产品、工作流系统、消费型工具。',
+        label: 'Focus',
+        value: 'AI 产品、工作流系统、消费工具。',
       },
       {
-        label: '载体',
+        label: 'Surfaces',
         value: 'Web、iOS、自动化、产品系统。',
       },
       {
-        label: '偏好',
+        label: 'Bias',
         value: '清晰、实用、杠杆、执行。',
       },
       {
-        label: '工作方式',
-        value: '从产品定义一路做到上线。',
+        label: 'Working mode',
+        value: '通过持续交付来完成产品定义。',
       },
     ],
-    capabilitiesLabel: '能力',
-    primaryAction: '查看作品',
+    capabilitiesLabel: 'Capabilities',
+    primaryAction: '查看项目',
     secondaryAction: '联系我',
     actionsAriaLabel: '主要操作',
     portraitAlt: 'Ryan Teo 头像',
   },
   about: {
     title: '关于我',
-    intro: '我打造的产品里，工作流比新奇感更重要。',
+    intro: '我更关注工作流，而不是只追求新奇。',
     paragraphs: [
-      '我的工作横跨 AI 产品、工作流系统、消费型工具，以及强调执行力的产品设计。我关注的是让软件更清晰、更好用，并且随着时间推移拥有更强的结构价值。',
-      '我最感兴趣的是那些能从建议走向行动、从界面走向系统的产品。',
+      '我的工作主要围绕 AI 产品、工作流系统、消费型工具，以及以执行为导向的产品设计。我在意的是让软件更清楚、更好用，也能随着时间累积出更强的结构价值。',
+      '我最感兴趣的是那些能够从建议走向行动、从界面走向系统的产品。',
     ],
   },
   capabilityMap: {
-    kicker: '能力地图',
-    title: '能力地图',
-    intro: '这是我的工作模型。点击一项能力或项目，就能追踪它们之间实际如何连接。',
-    supportingCopy:
-      '我不会把能力呈现成一套静态技能栈，而是把系统思考、执行力与已交付作品之间的联系展示出来。',
+    title: '能力映射',
+    subtitle: '用结构化方式展示能力如何连接到真实项目。',
     defaultSummary: '选择一个项目或能力，查看这些工作如何相互关联。',
     activeProjectSummary: (projectTitle) => `正在显示与 ${projectTitle} 相关联的能力。`,
     activeCapabilitySummary: (capabilityLabel) => `正在显示与 ${capabilityLabel} 相关联的作品。`,
@@ -69,19 +66,12 @@ const zhSG: LocaleMessages = {
     linkedProjectsLabel: (count) => `关联项目 ${count} 个`,
   },
   selectedWork: {
-    kicker: '精选作品',
-    title: '精选作品',
-    intro: '这是一个由关系驱动的作品档案，涵盖我在 AI、工作流、消费工具与数字化呈现上的产品与系统实践。',
-    moduleLabel: '精选作品',
-    whyItMattersLabel: '为什么重要',
-    angleLabel: 'Ryan 的视角',
-    roleLabel: '角色',
+    title: '代表项目',
     capabilityTagsAriaLabel: (projectTitle) => `${projectTitle} 的能力标签`,
   },
   contact: {
-    kicker: '联系',
     title: '联系',
-    intro: '如果你想聊产品、系统或应用型 AI，可以通过以下渠道直接联系我。',
+    subtitle: '如果你想交流产品、系统或应用型 AI，可以直接联系我。',
     linksAriaLabel: '联系链接',
     labels: {
       email: '电子邮件',
@@ -134,34 +124,23 @@ const zhSG: LocaleMessages = {
   projects: {
     'immi-pilot': {
       title: 'ImmiPilot',
-      positioning: '一个面向移民执行场景、以合规为核心的工作流平台。',
-      whyItMatters:
-        '它把复杂的移民工作视为带有检查点、审核与责任链的结构化流程，而不是松散的 AI 聊天体验。',
-      angle: '核心构建点是结构化工作流、顾问审核与执行逻辑，而不是泛化 AI 对话。',
-      role: '产品定义、工作流逻辑、LLM 系统设计，以及 Web 端执行。',
+      summary: '一个面向移民执行流程的合规工作流平台。',
+      detail: '核心不是泛化 AI 聊天，而是围绕结构化流程、顾问复核与执行逻辑来构建。',
     },
     shiok: {
       title: 'Shiok',
-      positioning: '一个结合 AI 辅助推荐与行为记账的餐饮产品。',
-      whyItMatters: '它利用受限决策与餐后反馈循环，让用餐数据比被动记录更有价值。',
-      angle: '围绕真实用户行为、受限决策以及餐后反馈循环来设计。',
-      role: '消费产品定义、原生循环设计、AI 实用性塑造与执行。',
+      summary: '一个结合 AI 的外食与行为记账产品。',
+      detail: '围绕真实用户行为、受约束决策，以及餐后反馈回路来设计。',
     },
     'you-wife-list': {
       title: 'You Wife List',
-      positioning: '一个闭环式购物与家庭库存系统。',
-      whyItMatters:
-        '它把计划、采购、存储与消耗连接成一个统一的家庭工作流，而不是零散的清单功能。',
-      angle: '目标是把计划、采购、库存和消耗整合成一个真正可用的家庭流程。',
-      role: '系统设计、iOS 工具思维、工作流简化与执行。',
+      summary: '一个闭环式购物与家庭库存系统。',
+      detail: '把计划、购买、库存与消耗连接成一个可实际使用的家庭工作流。',
     },
     'bento-aiii': {
       title: 'Bento AIII',
-      positioning: '一个面向 AI 原生公司的数字化呈现系统。',
-      whyItMatters:
-        '它把定位、技术方向与能力组织成一个表达清晰的 Web 系统，而不是塞满创业套话的展示页。',
-      angle: '这是一个围绕品牌叙事与能力表达设计的 Web 系统，用来清晰传达定位、能力与技术方向。',
-      role: '叙事系统设计、Web 体验架构、自动化思考与执行。',
+      summary: '一个面向 AI 公司的数字化品牌呈现系统。',
+      detail: '这是一个面向品牌与叙事的 Web 系统，用来更清楚地表达定位、能力与技术方向。',
     },
   },
 };

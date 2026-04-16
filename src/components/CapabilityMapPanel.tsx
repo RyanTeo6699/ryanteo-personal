@@ -40,17 +40,10 @@ export function CapabilityMapPanel({
     <section id="capability" className="content-section anchor-section capability-section">
       <div className="section-stack">
         <div className="section-heading">
-          <div className="section-stack section-stack--tight">
-            <span className="section-kicker">{siteData.capabilityMapContent.kicker}</span>
-            <h2 className="section-title section-title--compact">
-              {siteData.capabilityMapContent.title}
-            </h2>
-          </div>
-
-          <div className="section-stack section-stack--tight">
-            <p className="section-copy">{siteData.capabilityMapContent.intro}</p>
-            <p className="section-copy">{siteData.capabilityMapContent.supportingCopy}</p>
-          </div>
+          <h2 className="section-title section-title--compact">
+            {siteData.capabilityMapContent.title}
+          </h2>
+          <p className="section-copy">{siteData.capabilityMapContent.subtitle}</p>
         </div>
 
         <div className="map-shell">
@@ -98,7 +91,7 @@ export function CapabilityMapPanel({
                     >
                       <span className="map-project-index">{project.index}</span>
                       <span className="map-project-title">{project.title}</span>
-                      <p className="map-project-text">{project.positioning}</p>
+                      <p className="map-project-text">{project.summary}</p>
                       <span className="map-count">
                         {siteData.capabilityMapContent.linkedCapabilitiesLabel(
                           project.relatedCapabilityIds.length,

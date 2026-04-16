@@ -13,10 +13,8 @@ export type LocaleCapabilityCopy = {
 
 export type LocaleProjectCopy = {
   title: string;
-  positioning: string;
-  whyItMatters: string;
-  angle: string;
-  role: string;
+  summary: string;
+  detail: string;
 };
 
 export type LocaleMessages = {
@@ -52,10 +50,8 @@ export type LocaleMessages = {
     paragraphs: string[];
   };
   capabilityMap: {
-    kicker: string;
     title: string;
-    intro: string;
-    supportingCopy: string;
+    subtitle: string;
     defaultSummary: string;
     activeProjectSummary: (projectTitle: string) => string;
     activeCapabilitySummary: (capabilityLabel: string) => string;
@@ -66,19 +62,12 @@ export type LocaleMessages = {
     linkedProjectsLabel: (count: number) => string;
   };
   selectedWork: {
-    kicker: string;
     title: string;
-    intro: string;
-    moduleLabel: string;
-    whyItMattersLabel: string;
-    angleLabel: string;
-    roleLabel: string;
     capabilityTagsAriaLabel: (projectTitle: string) => string;
   };
   contact: {
-    kicker: string;
     title: string;
-    intro: string;
+    subtitle: string;
     linksAriaLabel: string;
     labels: {
       email: string;
