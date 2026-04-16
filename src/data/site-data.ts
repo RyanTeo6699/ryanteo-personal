@@ -1,3 +1,5 @@
+import type { LocaleMessages } from '../locales';
+
 export type SiteNavLink = {
   id: string;
   label: string;
@@ -29,146 +31,33 @@ export type ContactLink = {
   href: string;
 };
 
-type CapabilityRecord = Omit<Capability, 'relatedProjectIds'>;
-type ProjectRecord = Omit<Project, 'relatedCapabilityIds'>;
+export type SiteData = ReturnType<typeof createSiteData>;
 
-export const siteIdentity = {
-  name: 'Ryan Teo',
+type CapabilityRecord = {
+  id: string;
 };
 
-export const avatarImageUrl = new URL('../../素材/头像.JPG', import.meta.url).href;
-
-export const siteNavLinks: SiteNavLink[] = [
-  {
-    id: 'work',
-    label: 'Work',
-    href: '#work',
-  },
-  {
-    id: 'capability',
-    label: 'Capability',
-    href: '#capability',
-  },
-  {
-    id: 'about',
-    label: 'About',
-    href: '#about',
-  },
-  {
-    id: 'contact',
-    label: 'Contact',
-    href: '#contact',
-  },
-];
+type ProjectRecord = {
+  id: string;
+  index: string;
+};
 
 const capabilityRecords: CapabilityRecord[] = [
-  {
-    id: 'product-systems',
-    label: 'Product Systems',
-    shortLabel: 'Systems',
-    description:
-      'Connects user flow, decision logic, and product structure into one operating model.',
-  },
-  {
-    id: 'ai-workflow-design',
-    label: 'AI Workflow Design',
-    shortLabel: 'AI Workflow',
-    description:
-      'Uses AI inside structured flow, review logic, and real execution instead of generic prompts.',
-  },
-  {
-    id: 'swiftui-ios',
-    label: 'SwiftUI / iOS',
-    shortLabel: 'iOS',
-    description:
-      'Builds native product loops with clarity, release discipline, and useful interaction design.',
-  },
-  {
-    id: 'nextjs-web',
-    label: 'Next.js / Web',
-    shortLabel: 'Web',
-    description:
-      'Turns positioning and product logic into coherent web surfaces that feel sharp and legible.',
-  },
-  {
-    id: 'automation',
-    label: 'Automation',
-    shortLabel: 'Automation',
-    description:
-      'Creates repeatable operating leverage where manual follow-through would normally break down.',
-  },
-  {
-    id: 'strategy',
-    label: 'Strategy',
-    shortLabel: 'Strategy',
-    description:
-      'Frames sequence, scope, and product direction around what can survive contact with real use.',
-  },
-  {
-    id: 'execution',
-    label: 'Execution',
-    shortLabel: 'Execution',
-    description:
-      'Carries the thread from product framing into the shipped surface without losing coherence.',
-  },
-  {
-    id: 'llm-productization',
-    label: 'LLM Productization',
-    shortLabel: 'LLM',
-    description:
-      'Turns model capability into interfaces, workflows, and loops that people can actually use.',
-  },
+  { id: 'product-systems' },
+  { id: 'ai-workflow-design' },
+  { id: 'swiftui-ios' },
+  { id: 'nextjs-web' },
+  { id: 'automation' },
+  { id: 'strategy' },
+  { id: 'execution' },
+  { id: 'llm-productization' },
 ];
 
 const projectRecords: ProjectRecord[] = [
-  {
-    id: 'immi-pilot',
-    index: '01',
-    title: 'ImmiPilot',
-    positioning: 'A compliance-driven workflow platform for immigration execution.',
-    whyItMatters:
-      'It treats complex immigration work as a structured operating flow with checkpoints, review, and accountability instead of a loose AI chat experience.',
-    angle:
-      'Built around structured workflows, consultant review, and execution logic rather than generic AI chat.',
-    role:
-      'Product framing, workflow logic, LLM system design, and web execution.',
-  },
-  {
-    id: 'shiok',
-    index: '02',
-    title: 'Shiok',
-    positioning: 'An AI-assisted dining and behavioral bookkeeping product.',
-    whyItMatters:
-      'It uses constrained decisions and post-meal feedback loops to make dining data more useful than passive logging.',
-    angle:
-      'Designed around real user behavior, constrained decision-making, and post-meal feedback loops.',
-    role:
-      'Consumer product framing, native loop design, AI utility shaping, and execution.',
-  },
-  {
-    id: 'you-wife-list',
-    index: '03',
-    title: 'You Wife List',
-    positioning: 'A closed-loop shopping and home inventory system.',
-    whyItMatters:
-      'It connects planning, purchasing, storage, and consumption into a single household workflow instead of isolated list features.',
-    angle:
-      'Built to connect planning, purchasing, inventory, and consumption into one usable household workflow.',
-    role:
-      'Systems design, iOS utility thinking, workflow simplification, and execution.',
-  },
-  {
-    id: 'bento-aiii',
-    index: '04',
-    title: 'Bento AIII',
-    positioning: 'A digital presence system for an AI-native company.',
-    whyItMatters:
-      'It turns positioning, technical direction, and capability into a web system that can communicate clearly without startup filler.',
-    angle:
-      'A brand-facing and narrative-facing web system designed to express positioning, capability, and technical direction with clarity.',
-    role:
-      'Narrative system design, web experience architecture, automation thinking, and execution.',
-  },
+  { id: 'immi-pilot', index: '01' },
+  { id: 'shiok', index: '02' },
+  { id: 'you-wife-list', index: '03' },
+  { id: 'bento-aiii', index: '04' },
 ];
 
 const relationshipPairs = [
@@ -193,97 +82,129 @@ const relationshipPairs = [
   { capabilityId: 'execution', projectId: 'bento-aiii' },
 ];
 
-export const projects: Project[] = projectRecords.map((project) => ({
-  ...project,
-  relatedCapabilityIds: relationshipPairs
-    .filter((pair) => pair.projectId === project.id)
-    .map((pair) => pair.capabilityId),
-}));
-
-export const capabilities: Capability[] = capabilityRecords.map((capability) => ({
-  ...capability,
-  relatedProjectIds: relationshipPairs
-    .filter((pair) => pair.capabilityId === capability.id)
-    .map((pair) => pair.projectId),
-}));
-
-export const selectedWorkContent = {
-  title: 'Selected Work',
-  intro:
-    'A relationship-driven archive of products, systems, and platforms I have been shaping across AI, workflow, consumer utility, and digital presence.',
-};
-
-export const capabilityMapContent = {
-  title: 'Capability Map',
-  intro:
-    'This is the working model. Click a capability or project to trace how the relationships actually connect.',
-  supportingCopy:
-    'I do not present skills as a static stack. I present the links between systems thinking, execution, and shipped work.',
-};
-
-export const aboutContent = {
-  title: 'About Me',
-  intro: 'I build products where workflow matters more than novelty.',
-  paragraphs: [
-    'My work sits across AI products, workflow systems, consumer utility, and execution-heavy product design. I care about making software clearer, more usable, and more structurally valuable over time.',
-    'I am most interested in products that move from suggestion to action, and from interface to system.',
-  ],
-  metadata: [
-    {
-      label: 'Focus',
-      value: 'AI products, workflow systems, consumer utility.',
-    },
-    {
-      label: 'Surfaces',
-      value: 'Web, iOS, automation, product systems.',
-    },
-    {
-      label: 'Bias',
-      value: 'Clarity, utility, leverage, execution.',
-    },
-    {
-      label: 'Working mode',
-      value: 'Product framing through shipping.',
-    },
-  ],
-};
-
-export const contactContent = {
-  title: 'Contact',
-  intro:
-    'Direct channels for selected conversations around products, systems, and applied AI.',
-};
-
-export const contactLinks: ContactLink[] = [
+const contactLinkRecords = [
   {
-    id: 'email',
-    label: 'Email',
+    id: 'email' as const,
     href: 'mailto:ryanteo0628@gmail.com',
   },
   {
-    id: 'linkedin',
-    label: 'LinkedIn',
+    id: 'linkedin' as const,
     href: 'https://www.linkedin.com/in/ryanteo101/',
   },
   {
-    id: 'github',
-    label: 'GitHub',
+    id: 'github' as const,
     href: 'https://github.com/RyanTeo6699',
   },
 ];
 
-export function getProjectById(projectId: string) {
-  return projects.find((project) => project.id === projectId);
-}
+export const avatarImageUrl = new URL('../../素材/头像.JPG', import.meta.url).href;
 
-export function getCapabilityById(capabilityId: string) {
-  return capabilities.find((capability) => capability.id === capabilityId);
-}
+export function createSiteData(messages: LocaleMessages) {
+  const siteNavLinks: SiteNavLink[] = [
+    {
+      id: 'work',
+      label: messages.navigation.work,
+      href: '#work',
+    },
+    {
+      id: 'capability',
+      label: messages.navigation.capability,
+      href: '#capability',
+    },
+    {
+      id: 'about',
+      label: messages.navigation.about,
+      href: '#about',
+    },
+    {
+      id: 'contact',
+      label: messages.navigation.contact,
+      href: '#contact',
+    },
+  ];
 
-export function getProjectsForCapability(capabilityId: string) {
-  return projects.filter((project) => project.relatedCapabilityIds.includes(capabilityId));
-}
+  const projects: Project[] = projectRecords.map((project) => {
+    const projectCopy = messages.projects[project.id];
 
-export function getCapabilitiesForProject(projectId: string) {
-  return capabilities.filter((capability) => capability.relatedProjectIds.includes(projectId));
+    return {
+      ...project,
+      title: projectCopy.title,
+      positioning: projectCopy.positioning,
+      whyItMatters: projectCopy.whyItMatters,
+      angle: projectCopy.angle,
+      role: projectCopy.role,
+      relatedCapabilityIds: relationshipPairs
+        .filter((pair) => pair.projectId === project.id)
+        .map((pair) => pair.capabilityId),
+    };
+  });
+
+  const capabilities: Capability[] = capabilityRecords.map((capability) => {
+    const capabilityCopy = messages.capabilities[capability.id];
+
+    return {
+      ...capability,
+      label: capabilityCopy.label,
+      shortLabel: capabilityCopy.shortLabel,
+      description: capabilityCopy.description,
+      relatedProjectIds: relationshipPairs
+        .filter((pair) => pair.capabilityId === capability.id)
+        .map((pair) => pair.projectId),
+    };
+  });
+
+  const contactLinks: ContactLink[] = contactLinkRecords.map((contactLink) => ({
+    ...contactLink,
+    label: messages.contact.labels[contactLink.id],
+  }));
+
+  const getProjectById = (projectId: string) =>
+    projects.find((project) => project.id === projectId);
+
+  const getCapabilityById = (capabilityId: string) =>
+    capabilities.find((capability) => capability.id === capabilityId);
+
+  const getProjectsForCapability = (capabilityId: string) =>
+    projects.filter((project) => project.relatedCapabilityIds.includes(capabilityId));
+
+  const getCapabilitiesForProject = (projectId: string) =>
+    capabilities.filter((capability) => capability.relatedProjectIds.includes(projectId));
+
+  return {
+    seo: {
+      title: messages.site.metaTitle,
+      description: messages.site.metaDescription,
+    },
+    chrome: {
+      skipToContent: messages.site.skipToContent,
+      footerAriaLabel: messages.site.footerAriaLabel,
+      homeAriaLabel: messages.site.homeAriaLabel,
+      primaryNavigationAriaLabel: messages.site.primaryNavigationAriaLabel,
+      languageSwitcherAriaLabel: messages.languageSwitcher.ariaLabel,
+    },
+    siteIdentity: {
+      name: messages.site.name,
+    },
+    siteNavLinks,
+    avatarImageUrl,
+    profileContent: {
+      metadata: messages.profile.metadata,
+      capabilitiesLabel: messages.profile.capabilitiesLabel,
+      primaryAction: messages.profile.primaryAction,
+      secondaryAction: messages.profile.secondaryAction,
+      actionsAriaLabel: messages.profile.actionsAriaLabel,
+      portraitAlt: messages.profile.portraitAlt,
+    },
+    aboutContent: messages.about,
+    selectedWorkContent: messages.selectedWork,
+    capabilityMapContent: messages.capabilityMap,
+    contactContent: messages.contact,
+    contactLinks,
+    projects,
+    capabilities,
+    getProjectById,
+    getCapabilityById,
+    getProjectsForCapability,
+    getCapabilitiesForProject,
+  };
 }

@@ -1,6 +1,6 @@
 import type { MutableRefObject, RefObject } from 'react';
 import type { Capability, Project } from '../data/site-data';
-import { capabilityMapContent } from '../data/site-data';
+import { useSiteLocale } from '../i18n';
 import { ConnectorOverlay } from './ConnectorOverlay';
 
 type CapabilityMapPanelProps = {
@@ -34,20 +34,22 @@ export function CapabilityMapPanel({
   capabilityRefs,
   prefersReducedMotion,
 }: CapabilityMapPanelProps) {
+  const { siteData } = useSiteLocale();
+
   return (
     <section id="capability" className="content-section anchor-section capability-section">
       <div className="section-stack">
         <div className="section-heading">
           <div className="section-stack section-stack--tight">
-            <span className="section-kicker">Capability map</span>
+            <span className="section-kicker">{siteData.capabilityMapContent.kicker}</span>
             <h2 className="section-title section-title--compact">
-              {capabilityMapContent.title}
+              {siteData.capabilityMapContent.title}
             </h2>
           </div>
 
           <div className="section-stack section-stack--tight">
-            <p className="section-copy">{capabilityMapContent.intro}</p>
-            <p className="section-copy">{capabilityMapContent.supportingCopy}</p>
+            <p className="section-copy">{siteData.capabilityMapContent.intro}</p>
+            <p className="section-copy">{siteData.capabilityMapContent.supportingCopy}</p>
           </div>
         </div>
 
@@ -60,7 +62,7 @@ export function CapabilityMapPanel({
               onClick={onReset}
               disabled={!hasSelection}
             >
-              Clear selection
+              {siteData.capabilityMapContent.resetAction}
             </button>
           </div>
 
@@ -75,7 +77,7 @@ export function CapabilityMapPanel({
             />
 
             <div className="map-band">
-              <span className="map-band__label">Projects</span>
+              <span className="map-band__label">{siteData.capabilityMapContent.projectsLabel}</span>
               <div className="map-band__grid">
                 {projects.map((project) => {
                   const isActive = activeProjectIds.includes(project.id);
@@ -98,7 +100,9 @@ export function CapabilityMapPanel({
                       <span className="map-project-title">{project.title}</span>
                       <p className="map-project-text">{project.positioning}</p>
                       <span className="map-count">
-                        {project.relatedCapabilityIds.length} linked capabilities
+                        {siteData.capabilityMapContent.linkedCapabilitiesLabel(
+                          project.relatedCapabilityIds.length,
+                        )}
                       </span>
                     </button>
                   );
@@ -109,7 +113,9 @@ export function CapabilityMapPanel({
             <div className="map-axis" aria-hidden="true" />
 
             <div className="map-band">
-              <span className="map-band__label">Capabilities</span>
+              <span className="map-band__label">
+                {siteData.capabilityMapContent.capabilitiesLabel}
+              </span>
               <div className="map-band__grid">
                 {capabilities.map((capability) => {
                   const isActive = activeCapabilityIds.includes(capability.id);
@@ -131,7 +137,9 @@ export function CapabilityMapPanel({
                       <span className="capability-title">{capability.label}</span>
                       <p className="capability-description">{capability.description}</p>
                       <span className="map-count">
-                        {capability.relatedProjectIds.length} linked projects
+                        {siteData.capabilityMapContent.linkedProjectsLabel(
+                          capability.relatedProjectIds.length,
+                        )}
                       </span>
                     </button>
                   );

@@ -1,4 +1,4 @@
-import { contactLinks } from '../data/site-data';
+import { useSiteLocale } from '../i18n';
 
 function EmailIcon() {
   return (
@@ -55,9 +55,11 @@ function ContactIcon({ id }: { id: 'email' | 'linkedin' | 'github' }) {
 }
 
 export function ContactIconLinks() {
+  const { siteData } = useSiteLocale();
+
   return (
-    <div className="contact-links-row" aria-label="Contact links">
-      {contactLinks.map((link) => (
+    <div className="contact-links-row" aria-label={siteData.contactContent.linksAriaLabel}>
+      {siteData.contactLinks.map((link) => (
         <a
           key={link.id}
           className="contact-icon-link"

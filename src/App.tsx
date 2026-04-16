@@ -1,12 +1,14 @@
 import { HomePage } from './pages/HomePage';
 import { SiteHeader } from './components/SiteHeader';
-import { siteIdentity } from './data/site-data';
+import { useSiteLocale } from './i18n';
 
 export default function App() {
+  const { siteData } = useSiteLocale();
+
   return (
     <div className="site-root" id="top">
       <a className="skip-link" href="#main-content">
-        Skip to content
+        {siteData.chrome.skipToContent}
       </a>
 
       <SiteHeader />
@@ -15,10 +17,10 @@ export default function App() {
         <HomePage />
       </main>
 
-      <footer className="site-footer" aria-label="Site footer">
+      <footer className="site-footer" aria-label={siteData.chrome.footerAriaLabel}>
         <div className="site-footer__inner">
           <div className="site-footer__brand">
-            <p className="site-footer__name">{siteIdentity.name}</p>
+            <p className="site-footer__name">{siteData.siteIdentity.name}</p>
           </div>
         </div>
       </footer>

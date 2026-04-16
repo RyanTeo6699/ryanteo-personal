@@ -2,18 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { CapabilityMapPanel } from '../components/CapabilityMapPanel';
 import { ContactIconLinks } from '../components/ContactIconLinks';
 import { ProjectModule } from '../components/ProjectModule';
-import {
-  aboutContent,
-  avatarImageUrl,
-  capabilities,
-  contactContent,
-  getCapabilitiesForProject,
-  getCapabilityById,
-  getProjectById,
-  getProjectsForCapability,
-  projects,
-  selectedWorkContent,
-} from '../data/site-data';
+import { useSiteLocale } from '../i18n';
 
 type ActiveSelection =
   | {
@@ -47,6 +36,7 @@ function usePrefersReducedMotion() {
 }
 
 export function HomePage() {
+  const { siteData } = useSiteLocale();
   const [activeSelection, setActiveSelection] = useState<ActiveSelection>(null);
   const workRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const mapProjectRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -58,15 +48,17 @@ export function HomePage() {
   let activeCapabilityIds: string[] = [];
 
   if (activeSelection?.type === 'capability') {
-    activeProjectIds = getProjectsForCapability(activeSelection.id).map((project) => project.id);
+    activeProjectIds = siteData
+      .getProjectsForCapability(activeSelection.id)
+      .map((project) => project.id);
     activeCapabilityIds = [activeSelection.id];
   }
 
   if (activeSelection?.type === 'project') {
     activeProjectIds = [activeSelection.id];
-    activeCapabilityIds = getCapabilitiesForProject(activeSelection.id).map(
-      (capability) => capability.id,
-    );
+    activeCapabilityIds = siteData
+      .getCapabilitiesForProject(activeSelection.id)
+      .map((capability) => capability.id);
   }
 
   useEffect(() => {
@@ -119,14 +111,20 @@ export function HomePage() {
 
   const activeSummary =
     activeSelection?.type === 'project'
-      ? `Showing the capabilities connected to ${
-          getProjectById(activeSelection.id)?.title ?? 'this project'
-        }.`
+      ? (() => {
+          const project = siteData.getProjectById(activeSelection.id);
+          return project
+            ? siteData.capabilityMapContent.activeProjectSummary(project.title)
+            : siteData.capabilityMapContent.defaultSummary;
+        })()
       : activeSelection?.type === 'capability'
-        ? `Showing the work connected to ${
-            getCapabilityById(activeSelection.id)?.label ?? 'this capability'
-          }.`
-        : 'Select a project or capability to see how the work connects.';
+        ? (() => {
+            const capability = siteData.getCapabilityById(activeSelection.id);
+            return capability
+              ? siteData.capabilityMapContent.activeCapabilitySummary(capability.label)
+              : siteData.capabilityMapContent.defaultSummary;
+          })()
+        : siteData.capabilityMapContent.defaultSummary;
 
   return (
     <div className="home-flow">
@@ -134,13 +132,17 @@ export function HomePage() {
         <div className="profile-layout">
           <div className="profile-media">
             <div className="profile-portrait-shell">
-              <img className="profile-portrait" src={avatarImageUrl} alt="Ryan Teo portrait" />
+              <img
+                className="profile-portrait"
+                src={siteData.avatarImageUrl}
+                alt={siteData.profileContent.portraitAlt}
+              />
             </div>
           </div>
 
           <div className="profile-summary">
             <div className="about-metadata">
-              {aboutContent.metadata.map((row) => (
+              {siteData.profileContent.metadata.map((row) => (
                 <div key={row.label} className="about-meta-row">
                   <span className="about-meta-row__label">{row.label}</span>
                   <p className="about-meta-row__value">{row.value}</p>
@@ -149,9 +151,11 @@ export function HomePage() {
             </div>
 
             <div className="about-tags-block">
-              <span className="about-meta-row__label">Capabilities</span>
+              <span className="about-meta-row__label">
+                {siteData.profileContent.capabilitiesLabel}
+              </span>
               <div className="about-tags">
-                {capabilities.map((capability) => (
+                {siteData.capabilities.map((capability) => (
                   <span key={capability.id} className="capability-tag">
                     {capability.label}
                   </span>
@@ -159,12 +163,15 @@ export function HomePage() {
               </div>
             </div>
 
-            <div className="profile-actions" aria-label="Primary actions">
+            <div
+              className="profile-actions"
+              aria-label={siteData.profileContent.actionsAriaLabel}
+            >
               <a className="action-link action-link--primary" href="#work">
-                View Work
+                {siteData.profileContent.primaryAction}
               </a>
               <a className="action-link action-link--secondary" href="#contact">
-                Get in Touch
+                {siteData.profileContent.secondaryAction}
               </a>
             </div>
           </div>
@@ -173,11 +180,11 @@ export function HomePage() {
 
       <section id="about" className="content-section about-me-section anchor-section">
         <div className="about-me-layout">
-          <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
+          <h2 className="section-title section-title--compact">{siteData.aboutContent.title}</h2>
 
           <div className="about-body">
-            <p>{aboutContent.intro}</p>
-            {aboutContent.paragraphs.map((paragraph) => (
+            <p>{siteData.aboutContent.intro}</p>
+            {siteData.aboutContent.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
@@ -185,8 +192,8 @@ export function HomePage() {
       </section>
 
       <CapabilityMapPanel
-        projects={projects}
-        capabilities={capabilities}
+        projects={siteData.projects}
+        capabilities={siteData.capabilities}
         activeProjectIds={activeProjectIds}
         activeCapabilityIds={activeCapabilityIds}
         hasSelection={activeSelection !== null}
@@ -204,16 +211,16 @@ export function HomePage() {
         <div className="section-stack">
           <div className="section-heading">
             <div className="section-stack section-stack--tight">
-              <span className="section-kicker">Selected work</span>
+              <span className="section-kicker">{siteData.selectedWorkContent.kicker}</span>
               <h2 className="section-title section-title--compact">
-                {selectedWorkContent.title}
+                {siteData.selectedWorkContent.title}
               </h2>
             </div>
-            <p className="section-copy">{selectedWorkContent.intro}</p>
+            <p className="section-copy">{siteData.selectedWorkContent.intro}</p>
           </div>
 
           <div className="projects-grid">
-            {projects.map((project) => {
+            {siteData.projects.map((project) => {
               const isActive = activeProjectIds.includes(project.id);
               const isDimmed = activeSelection !== null && !isActive;
 
@@ -238,10 +245,12 @@ export function HomePage() {
         <div className="contact-section">
           <div className="section-heading contact-heading">
             <div className="section-stack section-stack--tight">
-              <span className="section-kicker">Contact</span>
-              <h2 className="section-title section-title--compact">{contactContent.title}</h2>
+              <span className="section-kicker">{siteData.contactContent.kicker}</span>
+              <h2 className="section-title section-title--compact">
+                {siteData.contactContent.title}
+              </h2>
             </div>
-            <p className="section-copy">{contactContent.intro}</p>
+            <p className="section-copy">{siteData.contactContent.intro}</p>
           </div>
 
           <ContactIconLinks />
