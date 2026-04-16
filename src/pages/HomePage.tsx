@@ -133,31 +133,21 @@ export function HomePage() {
 
   const activeSummary =
     activeSelection?.type === 'project'
-      ? `Active project // ${getProjectById(activeSelection.id)?.title ?? 'Project'}`
+      ? `Showing the capabilities connected to ${
+          getProjectById(activeSelection.id)?.title ?? 'this project'
+        }.`
       : activeSelection?.type === 'capability'
-        ? `Active capability // ${
-            getCapabilityById(activeSelection.id)?.label ?? 'Capability'
-          }`
-        : 'Select a capability or project to trace the working system.';
+        ? `Showing the work connected to ${
+            getCapabilityById(activeSelection.id)?.label ?? 'this capability'
+          }.`
+        : 'Select a project or capability to see how the work connects.';
 
   return (
-    <div className="page-stack">
-      <section className="page-panel hero-panel anchor-section" id="hero">
-        <div className="hero-grid">
-          <div className="hero-visual">
-            <div className="portrait-frame hero-portrait-frame">
-              <div className="window-bar">
-                <span className="window-chip">Avatar</span>
-                <span className="window-title">Ryan</span>
-                <span className="window-status">Source JPG</span>
-              </div>
-
-              <img className="hero-portrait" src={avatarImageUrl} alt="Ryan portrait" />
-            </div>
-          </div>
-
+    <div className="home-flow">
+      <section className="hero-section anchor-section" id="hero">
+        <div className="hero-layout">
           <div className="hero-copy-block">
-            <span className="hero-label">{heroContent.name}</span>
+            <span className="section-kicker">{heroContent.name}</span>
             <h1 className="hero-title">{heroContent.primaryLine}</h1>
 
             <div className="hero-description">
@@ -187,25 +177,31 @@ export function HomePage() {
             </div>
 
             <aside className="hero-aside">
-              <span className="panel-label">System status</span>
-              <div className="status-grid">
+              <span className="section-kicker">Working priorities</span>
+              <div className="hero-metrics">
                 {heroContent.statusRows.map((row) => (
-                  <div key={row.label} className="status-row">
-                    <span className="status-row__label">{row.label}</span>
-                    <p className="status-row__value">{row.value}</p>
+                  <div key={row.label} className="hero-metric">
+                    <span className="hero-metric__label">{row.label}</span>
+                    <p className="hero-metric__value">{row.value}</p>
                   </div>
                 ))}
               </div>
             </aside>
           </div>
+
+          <div className="hero-media">
+            <div className="hero-portrait-shell">
+              <img className="hero-portrait" src={avatarImageUrl} alt="Ryan portrait" />
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="work" className="page-panel anchor-section">
-        <div className="system-grid">
+      <section id="work" className="content-section anchor-section">
+        <div className="section-stack">
           <div className="section-heading">
-            <div className="system-grid">
-              <span className="section-label">Selected work</span>
+            <div className="section-stack section-stack--tight">
+              <span className="section-kicker">Selected work</span>
               <h2 className="section-title section-title--compact">
                 {selectedWorkContent.title}
               </h2>
@@ -251,11 +247,11 @@ export function HomePage() {
         prefersReducedMotion={prefersReducedMotion}
       />
 
-      <section id="about" className="page-panel anchor-section">
-        <div className="system-grid">
+      <section id="about" className="content-section anchor-section">
+        <div className="section-stack">
           <div className="section-heading">
-            <div className="system-grid">
-              <span className="section-label">About</span>
+            <div className="section-stack section-stack--tight">
+              <span className="section-kicker">About</span>
               <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
             </div>
             <p className="section-copy">{aboutContent.intro}</p>
@@ -279,7 +275,7 @@ export function HomePage() {
               </div>
 
               <div className="about-tags-block">
-                <span className="panel-label">Capability surface</span>
+                <span className="section-kicker">Capabilities</span>
                 <div className="about-tags">
                   {capabilities.map((capability) => (
                     <span key={capability.id} className="capability-tag">
@@ -293,11 +289,11 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="page-panel anchor-section">
+      <section id="contact" className="content-section content-section--compact anchor-section">
         <div className="contact-section">
           <div className="section-heading contact-heading">
-            <div className="system-grid">
-              <span className="section-label">Contact</span>
+            <div className="section-stack section-stack--tight">
+              <span className="section-kicker">Contact</span>
               <h2 className="section-title section-title--compact">{contactContent.title}</h2>
             </div>
             <p className="section-copy">{contactContent.intro}</p>

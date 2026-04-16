@@ -11,19 +11,20 @@ type ProjectModuleProps = {
 
 function ProjectModuleBody({ project }: { project: Project }) {
   const capabilityLabels = project.relatedCapabilityIds
-    .map((capabilityId) => getCapabilityById(capabilityId)?.shortLabel ?? getCapabilityById(capabilityId)?.label)
+    .flatMap((capabilityId) => {
+      const capability = getCapabilityById(capabilityId);
+      return capability ? [capability.shortLabel ?? capability.label] : [];
+    })
     .filter((label): label is string => Boolean(label));
 
   return (
     <>
-      <div className="window-bar">
-        <span className="window-chip">{project.index}</span>
-        <span className="window-title">Project Module</span>
-        <span className="window-status">Archive</span>
+      <div className="module-topline">
+        <span className="module-index">{project.index}</span>
+        <span className="module-label">Selected work</span>
       </div>
 
       <div className="module-header">
-        <span className="module-label">Selected work</span>
         <h3 className="module-title">{project.title}</h3>
         <p className="module-positioning">{project.positioning}</p>
       </div>
@@ -42,8 +43,7 @@ function ProjectModuleBody({ project }: { project: Project }) {
 
       <p className="module-role">
         <span className="module-role__label">Role</span>
-        {'  '}
-        {project.role}
+        <span className="module-role__value">{project.role}</span>
       </p>
 
       <div className="capability-tags" aria-label={`${project.title} capability tags`}>

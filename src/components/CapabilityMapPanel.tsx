@@ -35,17 +35,17 @@ export function CapabilityMapPanel({
   prefersReducedMotion,
 }: CapabilityMapPanelProps) {
   return (
-    <section id="capability" className="page-panel anchor-section">
-      <div className="system-grid">
+    <section id="capability" className="content-section anchor-section capability-section">
+      <div className="section-stack">
         <div className="section-heading">
-          <div className="system-grid">
-            <span className="section-label">Capability map</span>
+          <div className="section-stack section-stack--tight">
+            <span className="section-kicker">Capability map</span>
             <h2 className="section-title section-title--compact">
               {capabilityMapContent.title}
             </h2>
           </div>
 
-          <div className="system-grid">
+          <div className="section-stack section-stack--tight">
             <p className="section-copy">{capabilityMapContent.intro}</p>
             <p className="section-copy">{capabilityMapContent.supportingCopy}</p>
           </div>
@@ -60,7 +60,7 @@ export function CapabilityMapPanel({
               onClick={onReset}
               disabled={!hasSelection}
             >
-              Reset selection
+              Clear selection
             </button>
           </div>
 
@@ -75,7 +75,7 @@ export function CapabilityMapPanel({
             />
 
             <div className="map-band">
-              <span className="panel-label">Project anchors</span>
+              <span className="map-band__label">Projects</span>
               <div className="map-band__grid">
                 {projects.map((project) => {
                   const isActive = activeProjectIds.includes(project.id);
@@ -109,7 +109,7 @@ export function CapabilityMapPanel({
             <div className="map-axis" aria-hidden="true" />
 
             <div className="map-band">
-              <span className="panel-label">Capability anchors</span>
+              <span className="map-band__label">Capabilities</span>
               <div className="map-band__grid">
                 {capabilities.map((capability) => {
                   const isActive = activeCapabilityIds.includes(capability.id);
