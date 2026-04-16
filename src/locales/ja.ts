@@ -22,9 +22,12 @@ const ja: LocaleMessages = {
   },
   themeSwitcher: {
     ariaLabel: 'テーマ切り替え',
-    light: 'ライト',
-    dark: 'ダーク',
-    system: 'システム',
+    light: '☀︎',
+    dark: '☾',
+    system: 'Auto',
+    lightAriaLabel: 'ライトテーマ',
+    darkAriaLabel: 'ダークテーマ',
+    systemAriaLabel: 'システム設定に従う',
   },
   profile: {
     metadata: [

@@ -19,6 +19,11 @@ export function SiteHeader() {
       label: siteData.themeContent.system,
     },
   ];
+  const themeOptionLabels: Record<ThemePreference, string> = {
+    light: siteData.themeContent.lightAriaLabel,
+    dark: siteData.themeContent.darkAriaLabel,
+    system: siteData.themeContent.systemAriaLabel,
+  };
 
   return (
     <header className="site-header">
@@ -70,6 +75,8 @@ export function SiteHeader() {
                   className="theme-switcher__button"
                   data-active={themePreference === option.id}
                   aria-pressed={themePreference === option.id}
+                  aria-label={themeOptionLabels[option.id]}
+                  title={themeOptionLabels[option.id]}
                   onClick={() => setThemePreference(option.id)}
                 >
                   {option.label}

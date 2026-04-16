@@ -41,6 +41,9 @@ export type LocaleMessages = {
     light: string;
     dark: string;
     system: string;
+    lightAriaLabel: string;
+    darkAriaLabel: string;
+    systemAriaLabel: string;
   };
   profile: {
     metadata: LocaleMetadataRow[];

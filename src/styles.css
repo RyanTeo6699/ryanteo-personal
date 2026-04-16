@@ -312,6 +312,11 @@ a {
   white-space: nowrap;
 }
 
+.theme-switcher {
+  gap: 2px;
+  padding-inline: 3px;
+}
+
 .nav-link,
 .language-switcher__button,
 .theme-switcher__button,
@@ -362,9 +367,20 @@ a {
   white-space: nowrap;
 }
 
+.theme-switcher__button {
+  min-width: 2.4rem;
+  padding-inline: 9px;
+  font-size: 0.8rem;
+}
+
+.theme-switcher__button:last-child {
+  min-width: auto;
+  padding-inline: 11px;
+}
+
 .language-switcher__button[data-active='true'],
 .theme-switcher__button[data-active='true'] {
-  border-color: rgba(29, 29, 31, 0.12);
+  border-color: var(--control-line);
   background: linear-gradient(
     180deg,
     var(--control-surface-active-top) 0%,
@@ -1095,6 +1111,15 @@ a:focus-visible {
     min-height: 34px;
     padding-inline: 9px;
     font-size: 0.78rem;
+  }
+
+  .theme-switcher__button {
+    min-width: 2.25rem;
+    padding-inline: 8px;
+  }
+
+  .theme-switcher__button:last-child {
+    padding-inline: 10px;
   }
 
   .action-link {

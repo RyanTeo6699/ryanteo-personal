@@ -22,9 +22,12 @@ const zhSG: LocaleMessages = {
   },
   themeSwitcher: {
     ariaLabel: '主题切换',
-    light: '浅色',
-    dark: '深色',
-    system: '系统',
+    light: '☀︎',
+    dark: '☾',
+    system: 'Auto',
+    lightAriaLabel: '浅色模式',
+    darkAriaLabel: '深色模式',
+    systemAriaLabel: '跟随系统',
   },
   profile: {
     metadata: [

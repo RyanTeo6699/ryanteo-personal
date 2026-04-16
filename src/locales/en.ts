@@ -22,9 +22,12 @@ const en: LocaleMessages = {
   },
   themeSwitcher: {
     ariaLabel: 'Theme switcher',
-    light: 'Light',
-    dark: 'Dark',
-    system: 'System',
+    light: '☀︎',
+    dark: '☾',
+    system: 'Auto',
+    lightAriaLabel: 'Light theme',
+    darkAriaLabel: 'Dark theme',
+    systemAriaLabel: 'Follow system theme',
   },
   profile: {
     metadata: [
