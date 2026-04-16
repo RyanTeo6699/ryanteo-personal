@@ -150,14 +150,6 @@ export function HomePage() {
             <span className="section-kicker">{heroContent.name}</span>
             <h1 className="hero-title">{heroContent.primaryLine}</h1>
 
-            <div className="hero-description">
-              {heroContent.supportingLines.map((line) => (
-                <p key={line} className="hero-copy">
-                  {line}
-                </p>
-              ))}
-            </div>
-
             <div className="hero-actions">
               <button
                 type="button"
@@ -188,14 +180,70 @@ export function HomePage() {
               </div>
             </aside>
           </div>
+        </div>
+      </section>
 
-          <div className="hero-media">
-            <div className="hero-portrait-shell">
-              <img className="hero-portrait" src={avatarImageUrl} alt="Ryan Teo portrait" />
+      <section id="about" className="content-section anchor-section">
+        <div className="about-profile-layout">
+          <div className="about-profile-column">
+            <div className="profile-portrait-shell">
+              <img className="profile-portrait" src={avatarImageUrl} alt="Ryan Teo portrait" />
+            </div>
+
+            <div className="profile-summary">
+              <div className="about-metadata">
+                {aboutContent.metadata.map((row) => (
+                  <div key={row.label} className="about-meta-row">
+                    <span className="about-meta-row__label">{row.label}</span>
+                    <p className="about-meta-row__value">{row.value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="about-tags-block">
+                <span className="about-meta-row__label">Capabilities</span>
+                <div className="about-tags">
+                  {capabilities.map((capability) => (
+                    <span key={capability.id} className="capability-tag">
+                      {capability.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="about-copy-block">
+            <div className="section-stack section-stack--tight">
+              <span className="section-kicker">Profile</span>
+              <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
+            </div>
+
+            <div className="about-body">
+              <p>{aboutContent.intro}</p>
+              {aboutContent.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
+      <CapabilityMapPanel
+        projects={projects}
+        capabilities={capabilities}
+        activeProjectIds={activeProjectIds}
+        activeCapabilityIds={activeCapabilityIds}
+        hasSelection={activeSelection !== null}
+        activeSummary={activeSummary}
+        onProjectSelect={toggleProject}
+        onCapabilitySelect={toggleCapability}
+        onReset={() => setActiveSelection(null)}
+        canvasRef={canvasRef}
+        projectRefs={mapProjectRefs}
+        capabilityRefs={capabilityRefs}
+        prefersReducedMotion={prefersReducedMotion}
+      />
 
       <section id="work" className="content-section anchor-section">
         <div className="section-stack">
@@ -227,64 +275,6 @@ export function HomePage() {
                 />
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      <CapabilityMapPanel
-        projects={projects}
-        capabilities={capabilities}
-        activeProjectIds={activeProjectIds}
-        activeCapabilityIds={activeCapabilityIds}
-        hasSelection={activeSelection !== null}
-        activeSummary={activeSummary}
-        onProjectSelect={toggleProject}
-        onCapabilitySelect={toggleCapability}
-        onReset={() => setActiveSelection(null)}
-        canvasRef={canvasRef}
-        projectRefs={mapProjectRefs}
-        capabilityRefs={capabilityRefs}
-        prefersReducedMotion={prefersReducedMotion}
-      />
-
-      <section id="about" className="content-section anchor-section">
-        <div className="section-stack">
-          <div className="section-heading">
-            <div className="section-stack section-stack--tight">
-              <span className="section-kicker">About</span>
-              <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
-            </div>
-            <p className="section-copy">{aboutContent.intro}</p>
-          </div>
-
-          <div className="about-layout">
-            <div className="about-body">
-              {aboutContent.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-
-            <aside className="about-sidebar">
-              <div className="about-metadata">
-                {aboutContent.metadata.map((row) => (
-                  <div key={row.label} className="about-meta-row">
-                    <span className="about-meta-row__label">{row.label}</span>
-                    <p className="about-meta-row__value">{row.value}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="about-tags-block">
-                <span className="section-kicker">Capabilities</span>
-                <div className="about-tags">
-                  {capabilities.map((capability) => (
-                    <span key={capability.id} className="capability-tag">
-                      {capability.label}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </aside>
           </div>
         </div>
       </section>

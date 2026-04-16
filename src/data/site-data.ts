@@ -254,12 +254,11 @@ export const capabilityMapContent = {
 };
 
 export const aboutContent = {
-  title: 'About',
-  intro: 'I work on products that sit between software, behavior, and decision systems.',
+  title: 'About Me',
+  intro: 'I build products where workflow matters more than novelty.',
   paragraphs: [
-    'My interest is not in making things look AI-powered. It is in designing products that help people act more clearly, move through messy processes, and build better systems around real use cases.',
-    'Across web, iOS, workflow design, and applied AI, I focus on products that can move beyond novelty and become structurally useful.',
-    'Execution is harder to copy than advice. The products I care about connect front-end clarity with back-end structural value so the system gets more useful over time.',
+    'My work sits across AI products, workflow systems, consumer utility, and execution-heavy product design. I care about making software clearer, more usable, and more structurally valuable over time.',
+    'I am most interested in products that move from suggestion to action, and from interface to system.',
   ],
   metadata: [
     {
