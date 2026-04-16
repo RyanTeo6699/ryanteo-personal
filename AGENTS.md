@@ -204,7 +204,7 @@ Different sections may share the same design system, but they must not all feel 
 
 ## Content Framing Rules
 
-The website should present Ryan as:
+The website should present Ryan Teo as:
 - technically credible
 - product-minded
 - systems-oriented

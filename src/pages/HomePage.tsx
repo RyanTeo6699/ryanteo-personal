@@ -191,7 +191,7 @@ export function HomePage() {
 
           <div className="hero-media">
             <div className="hero-portrait-shell">
-              <img className="hero-portrait" src={avatarImageUrl} alt="Ryan portrait" />
+              <img className="hero-portrait" src={avatarImageUrl} alt="Ryan Teo portrait" />
             </div>
           </div>
         </div>

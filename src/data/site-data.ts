@@ -33,7 +33,7 @@ type CapabilityRecord = Omit<Capability, 'relatedProjectIds'>;
 type ProjectRecord = Omit<Project, 'relatedCapabilityIds'>;
 
 export const siteIdentity = {
-  name: 'Ryan',
+  name: 'Ryan Teo',
   tagline: 'Building AI products, systems, and leverage.',
 };
 
@@ -63,7 +63,7 @@ export const siteNavLinks: SiteNavLink[] = [
 ];
 
 export const heroContent = {
-  name: 'Ryan',
+  name: 'Ryan Teo',
   primaryLine: 'Building AI products, systems, and leverage.',
   supportingLines: [
     'I build products where workflow matters more than novelty.',
