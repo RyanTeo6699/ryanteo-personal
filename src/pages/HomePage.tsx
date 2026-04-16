@@ -158,6 +158,15 @@ export function HomePage() {
                 ))}
               </div>
             </div>
+
+            <div className="profile-actions" aria-label="Primary actions">
+              <a className="action-link action-link--primary" href="#work">
+                View Work
+              </a>
+              <a className="action-link action-link--secondary" href="#contact">
+                Get in Touch
+              </a>
+            </div>
           </div>
         </div>
       </section>
