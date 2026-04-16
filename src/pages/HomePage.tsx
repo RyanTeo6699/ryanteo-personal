@@ -147,7 +147,6 @@ export function HomePage() {
       <section className="hero-section anchor-section" id="hero">
         <div className="hero-layout">
           <div className="hero-copy-block">
-            <span className="section-kicker">{heroContent.name}</span>
             <h1 className="hero-title">{heroContent.primaryLine}</h1>
 
             <div className="hero-actions">
@@ -167,64 +166,51 @@ export function HomePage() {
                 {heroContent.secondaryCta.label}
               </button>
             </div>
-
-            <aside className="hero-aside">
-              <span className="section-kicker">Working priorities</span>
-              <div className="hero-metrics">
-                {heroContent.statusRows.map((row) => (
-                  <div key={row.label} className="hero-metric">
-                    <span className="hero-metric__label">{row.label}</span>
-                    <p className="hero-metric__value">{row.value}</p>
-                  </div>
-                ))}
-              </div>
-            </aside>
           </div>
         </div>
       </section>
 
-      <section id="about" className="content-section anchor-section">
-        <div className="about-profile-layout">
-          <div className="about-profile-column">
+      <section id="about" className="content-section profile-section anchor-section">
+        <div className="profile-layout">
+          <div className="profile-media">
             <div className="profile-portrait-shell">
               <img className="profile-portrait" src={avatarImageUrl} alt="Ryan Teo portrait" />
             </div>
+          </div>
 
-            <div className="profile-summary">
-              <div className="about-metadata">
-                {aboutContent.metadata.map((row) => (
-                  <div key={row.label} className="about-meta-row">
-                    <span className="about-meta-row__label">{row.label}</span>
-                    <p className="about-meta-row__value">{row.value}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="about-tags-block">
-                <span className="about-meta-row__label">Capabilities</span>
-                <div className="about-tags">
-                  {capabilities.map((capability) => (
-                    <span key={capability.id} className="capability-tag">
-                      {capability.label}
-                    </span>
-                  ))}
+          <div className="profile-summary">
+            <div className="about-metadata">
+              {aboutContent.metadata.map((row) => (
+                <div key={row.label} className="about-meta-row">
+                  <span className="about-meta-row__label">{row.label}</span>
+                  <p className="about-meta-row__value">{row.value}</p>
                 </div>
+              ))}
+            </div>
+
+            <div className="about-tags-block">
+              <span className="about-meta-row__label">Capabilities</span>
+              <div className="about-tags">
+                {capabilities.map((capability) => (
+                  <span key={capability.id} className="capability-tag">
+                    {capability.label}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="about-copy-block">
-            <div className="section-stack section-stack--tight">
-              <span className="section-kicker">Profile</span>
-              <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
-            </div>
+      <section className="content-section about-me-section">
+        <div className="about-me-layout">
+          <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
 
-            <div className="about-body">
-              <p>{aboutContent.intro}</p>
-              {aboutContent.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
+          <div className="about-body">
+            <p>{aboutContent.intro}</p>
+            {aboutContent.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </section>

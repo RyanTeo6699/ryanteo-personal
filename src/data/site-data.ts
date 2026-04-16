@@ -63,12 +63,7 @@ export const siteNavLinks: SiteNavLink[] = [
 ];
 
 export const heroContent = {
-  name: 'Ryan Teo',
   primaryLine: 'Building AI products, systems, and leverage.',
-  supportingLines: [
-    'I build products where workflow matters more than novelty.',
-    'My work sits at the intersection of AI, execution, product systems, and real-world usability.',
-  ],
   primaryCta: {
     label: 'View Work',
     targetId: 'work',
@@ -77,20 +72,6 @@ export const heroContent = {
     label: 'Get in Touch',
     targetId: 'contact',
   },
-  statusRows: [
-    {
-      label: 'Current focus',
-      value: 'Products that move from suggestion to action.',
-    },
-    {
-      label: 'Operating range',
-      value: 'Product framing, workflow design, web, iOS, execution.',
-    },
-    {
-      label: 'Core thesis',
-      value: 'Systems matter more than surface theatrics.',
-    },
-  ],
 };
 
 const capabilityRecords: CapabilityRecord[] = [

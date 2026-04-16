@@ -274,11 +274,8 @@ a {
 }
 
 .hero-copy-block,
-.hero-description,
-.hero-aside,
 .section-stack,
 .about-body,
-.about-sidebar,
 .about-tags-block,
 .contact-section {
   display: grid;
@@ -286,11 +283,10 @@ a {
 }
 
 .hero-copy-block {
-  max-width: 760px;
+  max-width: 720px;
 }
 
-.section-stack--tight,
-.hero-description {
+.section-stack--tight {
   gap: 10px;
 }
 
@@ -299,7 +295,6 @@ a {
 .module-index,
 .map-band__label,
 .map-count,
-.hero-metric__label,
 .project-field__label,
 .module-role__label,
 .about-meta-row__label {
@@ -383,31 +378,6 @@ a {
   background: var(--accent);
   border-color: transparent;
   color: #ffffff;
-}
-
-.hero-aside {
-  padding-top: 8px;
-}
-
-.hero-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.hero-metric {
-  display: grid;
-  gap: 8px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-}
-
-.hero-metric__value {
-  margin: 0;
-  color: var(--ink);
-  font-size: 1rem;
-  line-height: 1.5;
-  font-weight: 600;
 }
 
 .profile-portrait-shell {
@@ -608,28 +578,41 @@ a {
   box-shadow: 0 12px 32px rgba(0, 113, 227, 0.12);
 }
 
-.about-profile-layout {
+.profile-section {
+  padding-bottom: 44px;
+}
+
+.profile-layout {
   display: grid;
-  grid-template-columns: minmax(300px, 0.84fr) minmax(0, 1fr);
+  grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1fr);
   gap: clamp(28px, 5vw, 72px);
   align-items: start;
 }
 
-.about-profile-column {
-  display: grid;
-  gap: 20px;
+.profile-media {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .profile-summary {
+  display: grid;
+  gap: 18px;
   padding: 24px;
   border-radius: 28px;
   border: 1px solid var(--line);
   background: var(--surface-soft);
 }
 
-.about-copy-block {
+.about-me-section {
+  padding-top: 36px;
+  border-top: none;
+}
+
+.about-me-layout {
   display: grid;
-  gap: 18px;
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
 }
 
 .about-metadata {
@@ -779,7 +762,8 @@ a:focus-visible {
   .site-header__inner,
   .hero-layout,
   .section-heading,
-  .about-profile-layout,
+  .profile-layout,
+  .about-me-layout,
   .contact-heading {
     grid-template-columns: 1fr;
   }
@@ -794,7 +778,6 @@ a:focus-visible {
     max-width: 100%;
   }
 
-  .hero-metrics,
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -853,10 +836,6 @@ a:focus-visible {
   .profile-summary,
   .project-module {
     padding: 22px;
-  }
-
-  .contact-links-row {
-    gap: 12px;
   }
 
   .site-footer__inner {
