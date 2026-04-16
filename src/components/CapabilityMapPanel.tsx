@@ -35,7 +35,7 @@ export function CapabilityMapPanel({
   prefersReducedMotion,
 }: CapabilityMapPanelProps) {
   return (
-    <section id="capability-map" className="page-panel">
+    <section id="capability" className="page-panel anchor-section">
       <div className="system-grid">
         <div className="section-heading">
           <div className="system-grid">

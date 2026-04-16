@@ -1,20 +1,24 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { SiteShell } from './components/SiteShell';
-import { AboutPage } from './pages/AboutPage';
-import { ContactPage } from './pages/ContactPage';
 import { HomePage } from './pages/HomePage';
-import { ProjectsPage } from './pages/ProjectsPage';
+import { SiteHeader } from './components/SiteHeader';
+import { siteIdentity } from './data/site-data';
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<SiteShell />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
+    <div className="system-app" id="top">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+
+      <SiteHeader />
+
+      <main id="main-content" className="site-main">
+        <HomePage />
+
+        <footer className="page-panel site-footer">
+          <p>{siteIdentity.name} / Personal system</p>
+          <p>{siteIdentity.tagline}</p>
+        </footer>
+      </main>
+    </div>
   );
 }

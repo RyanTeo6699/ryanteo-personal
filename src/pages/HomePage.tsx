@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { CapabilityMapPanel } from '../components/CapabilityMapPanel';
 import { ContactIconLinks } from '../components/ContactIconLinks';
 import { ProjectModule } from '../components/ProjectModule';
@@ -14,7 +13,6 @@ import {
   getProjectsForCapability,
   heroContent,
   projects,
-  quickLinks,
   selectedWorkContent,
 } from '../data/site-data';
 
@@ -144,7 +142,7 @@ export function HomePage() {
 
   return (
     <div className="page-stack">
-      <section className="page-panel hero-panel">
+      <section className="page-panel hero-panel anchor-section" id="hero">
         <div className="hero-grid">
           <div className="hero-visual">
             <div className="portrait-frame hero-portrait-frame">
@@ -154,11 +152,7 @@ export function HomePage() {
                 <span className="window-status">Source JPG</span>
               </div>
 
-              <img
-                className="hero-portrait"
-                src={avatarImageUrl}
-                alt="Ryan portrait"
-              />
+              <img className="hero-portrait" src={avatarImageUrl} alt="Ryan portrait" />
             </div>
           </div>
 
@@ -207,49 +201,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="page-panel">
-        <div className="system-grid">
-          <div className="section-heading">
-            <div className="system-grid">
-              <span className="section-label">Quick links</span>
-              <h2 className="section-title section-title--compact">Route index</h2>
-            </div>
-            <p className="section-copy">
-              The site is organized as one personal system: direct entry points for work,
-              capability mapping, biography, and contact.
-            </p>
-          </div>
-
-          <div className="quick-links-grid">
-            {quickLinks.map((link) =>
-              link.to ? (
-                <Link key={link.id} className="quick-link-card" to={link.to}>
-                  <span className="quick-link-index">{link.index}</span>
-                  <span className="quick-link-title">{link.label}</span>
-                  <p className="quick-link-description">{link.description}</p>
-                </Link>
-              ) : (
-                <button
-                  key={link.id}
-                  type="button"
-                  className="quick-link-card"
-                  onClick={() => {
-                    if (link.targetId) {
-                      scrollToSection(link.targetId);
-                    }
-                  }}
-                >
-                  <span className="quick-link-index">{link.index}</span>
-                  <span className="quick-link-title">{link.label}</span>
-                  <p className="quick-link-description">{link.description}</p>
-                </button>
-              ),
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section id="selected-work" className="page-panel">
+      <section id="work" className="page-panel anchor-section">
         <div className="system-grid">
           <div className="section-heading">
             <div className="system-grid">
@@ -299,42 +251,53 @@ export function HomePage() {
         prefersReducedMotion={prefersReducedMotion}
       />
 
-      <section className="page-panel">
-        <div className="preview-grid">
-          <div className="preview-card">
-            <span className="section-label">About preview</span>
-            <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
-            <p className="section-copy">{aboutContent.intro}</p>
-            <div className="preview-actions">
-              <Link className="action-link" to="/about">
-                Open About
-              </Link>
+      <section id="about" className="page-panel anchor-section">
+        <div className="system-grid">
+          <div className="section-heading">
+            <div className="system-grid">
+              <span className="section-label">About</span>
+              <h2 className="section-title section-title--compact">{aboutContent.title}</h2>
             </div>
+            <p className="section-copy">{aboutContent.intro}</p>
           </div>
 
-          <div className="system-grid">
-            {aboutContent.paragraphs.slice(0, 2).map((paragraph) => (
-              <p key={paragraph} className="section-copy">
-                {paragraph}
-              </p>
-            ))}
-
-            <div className="capability-tags">
-              {capabilities.slice(0, 6).map((capability) => (
-                <span key={capability.id} className="capability-tag">
-                  {capability.label}
-                </span>
+          <div className="about-layout">
+            <div className="about-body">
+              {aboutContent.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
+
+            <aside className="about-sidebar">
+              <div className="about-metadata">
+                {aboutContent.metadata.map((row) => (
+                  <div key={row.label} className="about-meta-row">
+                    <span className="about-meta-row__label">{row.label}</span>
+                    <p className="about-meta-row__value">{row.value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="about-tags-block">
+                <span className="panel-label">Capability surface</span>
+                <div className="about-tags">
+                  {capabilities.map((capability) => (
+                    <span key={capability.id} className="capability-tag">
+                      {capability.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
 
-      <section id="contact-preview" className="page-panel">
-        <div className="system-grid">
-          <div className="section-heading">
+      <section id="contact" className="page-panel anchor-section">
+        <div className="contact-section">
+          <div className="section-heading contact-heading">
             <div className="system-grid">
-              <span className="section-label">Contact preview</span>
+              <span className="section-label">Contact</span>
               <h2 className="section-title section-title--compact">{contactContent.title}</h2>
             </div>
             <p className="section-copy">{contactContent.intro}</p>

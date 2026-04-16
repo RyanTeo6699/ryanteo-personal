@@ -1,17 +1,7 @@
-export type PageDirectoryEntry = {
+export type SiteNavLink = {
   id: string;
   label: string;
-  to: string;
-  summary: string;
-};
-
-export type QuickLink = {
-  id: string;
-  index: string;
-  label: string;
-  description: string;
-  to?: string;
-  targetId?: string;
+  href: string;
 };
 
 export type Capability = {
@@ -49,49 +39,26 @@ export const siteIdentity = {
 
 export const avatarImageUrl = new URL('../../素材/头像.JPG', import.meta.url).href;
 
-export const pageDirectory: PageDirectoryEntry[] = [
+export const siteNavLinks: SiteNavLink[] = [
   {
-    id: 'home',
-    label: 'Home',
-    to: '/',
-    summary:
-      'Primary surface for positioning, selected work, capability mapping, and the core signal of how Ryan builds.',
+    id: 'work',
+    label: 'Work',
+    href: '#work',
   },
   {
-    id: 'projects',
-    label: 'Projects',
-    to: '/projects',
-    summary:
-      'A dedicated archive of product systems, workflow platforms, consumer utility, and digital presence work.',
+    id: 'capability',
+    label: 'Capability',
+    href: '#capability',
   },
   {
     id: 'about',
     label: 'About',
-    to: '/about',
-    summary:
-      'A grounded personal page focused on product judgment, systems thinking, and execution across web, iOS, and applied AI.',
+    href: '#about',
   },
   {
     id: 'contact',
     label: 'Contact',
-    to: '/contact',
-    summary:
-      'Direct contact channels for selected conversations around products, systems, and applied AI.',
-  },
-];
-
-export const systemRailRows = [
-  {
-    label: 'Positioning',
-    value: 'AI products, systems, leverage.',
-  },
-  {
-    label: 'Bias',
-    value: 'Workflow over novelty.',
-  },
-  {
-    label: 'Surfaces',
-    value: 'Web, iOS, automation, applied AI.',
+    href: '#contact',
   },
 ];
 
@@ -104,11 +71,11 @@ export const heroContent = {
   ],
   primaryCta: {
     label: 'View Work',
-    targetId: 'selected-work',
+    targetId: 'work',
   },
   secondaryCta: {
     label: 'Get in Touch',
-    targetId: 'contact-preview',
+    targetId: 'contact',
   },
   statusRows: [
     {
@@ -121,48 +88,10 @@ export const heroContent = {
     },
     {
       label: 'Core thesis',
-      value: 'Utility compounds when systems actually hold together.',
+      value: 'Systems matter more than surface theatrics.',
     },
   ],
 };
-
-export const quickLinks: QuickLink[] = [
-  {
-    id: 'selected-work',
-    index: '01',
-    label: 'Selected Work',
-    description: 'Jump to the real project surface: AI workflow, iOS utility, web systems, and execution.',
-    targetId: 'selected-work',
-  },
-  {
-    id: 'capability-map',
-    index: '02',
-    label: 'Capability Map',
-    description: 'Trace how each capability connects to shipped work instead of reading a static skills list.',
-    targetId: 'capability-map',
-  },
-  {
-    id: 'projects-page',
-    index: '03',
-    label: 'Projects',
-    description: 'Open the dedicated project archive with full context, role, and capability framing.',
-    to: '/projects',
-  },
-  {
-    id: 'about-page',
-    index: '04',
-    label: 'About',
-    description: 'See the personal context behind the work, systems bias, and execution style.',
-    to: '/about',
-  },
-  {
-    id: 'contact-page',
-    index: '05',
-    label: 'Contact',
-    description: 'Open the compact contact surface for direct email, LinkedIn, and GitHub links.',
-    to: '/contact',
-  },
-];
 
 const capabilityRecords: CapabilityRecord[] = [
   {
@@ -313,20 +242,15 @@ export const capabilities: Capability[] = capabilityRecords.map((capability) => 
 export const selectedWorkContent = {
   title: 'Selected Work',
   intro:
-    'A selection of products, systems, and platforms I have been shaping across AI, workflow, consumer utility, and digital presence.',
+    'A relationship-driven archive of products, systems, and platforms I have been shaping across AI, workflow, consumer utility, and digital presence.',
 };
 
 export const capabilityMapContent = {
   title: 'Capability Map',
-  intro: 'A structured view of how I work across product, systems, and execution.',
-  supportingCopy:
-    'Click a capability to see how it connects to selected work. I do not treat capabilities as isolated tools. I treat them as parts of systems that need to ship, hold together, and create leverage.',
-};
-
-export const projectsPageContent = {
-  title: 'Projects',
   intro:
-    'A dedicated project surface for the products, systems, and web platforms Ryan has been shaping across AI, utility, and digital presence.',
+    'This is the working model. Click a capability or project to trace how the relationships actually connect.',
+  supportingCopy:
+    'I do not present skills as a static stack. I present the links between systems thinking, execution, and shipped work.',
 };
 
 export const aboutContent = {
@@ -335,7 +259,7 @@ export const aboutContent = {
   paragraphs: [
     'My interest is not in making things look AI-powered. It is in designing products that help people act more clearly, move through messy processes, and build better systems around real use cases.',
     'Across web, iOS, workflow design, and applied AI, I focus on products that can move beyond novelty and become structurally useful.',
-    'I care about front ends that feel sharp and desirable, and back ends that quietly become systems of record through actual use.',
+    'Execution is harder to copy than advice. The products I care about connect front-end clarity with back-end structural value so the system gets more useful over time.',
   ],
   metadata: [
     {
@@ -360,7 +284,7 @@ export const aboutContent = {
 export const contactContent = {
   title: 'Contact',
   intro:
-    'I am open to selected conversations around products, systems, and applied AI.',
+    'Direct channels for selected conversations around products, systems, and applied AI.',
 };
 
 export const contactLinks: ContactLink[] = [
@@ -395,8 +319,4 @@ export function getProjectsForCapability(capabilityId: string) {
 
 export function getCapabilitiesForProject(projectId: string) {
   return capabilities.filter((capability) => capability.relatedProjectIds.includes(projectId));
-}
-
-export function getPageByPath(pathname: string) {
-  return pageDirectory.find((page) => page.to === pathname) ?? pageDirectory[0];
 }
