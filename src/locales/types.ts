@@ -36,6 +36,12 @@ export type LocaleMessages = {
   languageSwitcher: {
     ariaLabel: string;
   };
+  themeSwitcher: {
+    ariaLabel: string;
+    light: string;
+    dark: string;
+    system: string;
+  };
   profile: {
     metadata: LocaleMetadataRow[];
     capabilitiesLabel: string;

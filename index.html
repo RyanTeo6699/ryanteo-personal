@@ -10,7 +10,29 @@
       name="description"
       content="Ryan Teo builds AI products, systems, and leverage through workflow-driven product systems across web, iOS, automation, and applied AI."
     />
+    <meta name="color-scheme" content="light dark" />
     <title>Ryan Teo | Personal system for AI products, systems, and leverage.</title>
+    <script>
+      (() => {
+        const themeStorageKey = 'site-theme-preference';
+        const root = document.documentElement;
+        const storedThemePreference = window.localStorage.getItem(themeStorageKey);
+        const themePreference =
+          storedThemePreference === 'light' ||
+          storedThemePreference === 'dark' ||
+          storedThemePreference === 'system'
+            ? storedThemePreference
+            : 'system';
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+        const resolvedTheme = themePreference === 'system' ? systemTheme : themePreference;
+
+        root.dataset.theme = resolvedTheme;
+        root.dataset.themePreference = themePreference;
+        root.style.colorScheme = resolvedTheme;
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

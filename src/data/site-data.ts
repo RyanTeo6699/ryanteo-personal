@@ -178,6 +178,7 @@ export function createSiteData(messages: LocaleMessages) {
       primaryNavigationAriaLabel: messages.site.primaryNavigationAriaLabel,
       languageSwitcherAriaLabel: messages.languageSwitcher.ariaLabel,
     },
+    themeContent: messages.themeSwitcher,
     siteIdentity: {
       name: messages.site.name,
     },

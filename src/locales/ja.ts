@@ -20,6 +20,12 @@ const ja: LocaleMessages = {
   languageSwitcher: {
     ariaLabel: '言語切り替え',
   },
+  themeSwitcher: {
+    ariaLabel: 'テーマ切り替え',
+    light: 'ライト',
+    dark: 'ダーク',
+    system: 'システム',
+  },
   profile: {
     metadata: [
       {

@@ -20,6 +20,12 @@ const zhSG: LocaleMessages = {
   languageSwitcher: {
     ariaLabel: '语言切换',
   },
+  themeSwitcher: {
+    ariaLabel: '主题切换',
+    light: '浅色',
+    dark: '深色',
+    system: '系统',
+  },
   profile: {
     metadata: [
       {
